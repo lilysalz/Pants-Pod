@@ -1,6 +1,8 @@
 volumes:
     postgres-data:
         external: true
+    pg-admin:
+        external: true
 services:
     postgres:
         image: postgres:14.5-bullseye
@@ -26,7 +28,6 @@ services:
         #user: "${UID}:1000" # on macOS and Linux, replace this with your real user id and group id
         volumes:
             - ./api:/app
-
     ghi:
         image: node:lts-bullseye
         command: /bin/bash run.sh
@@ -36,3 +37,13 @@ services:
             - ./ghi:/app
         ports:
             - "5173:5173"
+    pg-admin:
+        image: dpage/pgadmin4
+        volumes:
+            - pg-admin:/var/lib/pgadmin
+        ports:
+            - 8082:80
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PG_DEFAULT_EMAIL}
+            PGADMIN_DEFAULT_PASSWORD: ${PG_DEFAULT_PASS}
+            PGADMIN_DISABLE_POSTFIX: 1

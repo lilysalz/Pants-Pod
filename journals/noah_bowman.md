@@ -2,6 +2,7 @@ This is my journal.
 
 18JAN2024
 Setup databases with out migrations.  Added automatic UTC timestamp to comment creation table.  Setup PGAdmin.
+Cleaned up admin routes code.
 
 17JAN2024
 Today we finalized our database structure.  That took forever.  OMG.  But we have it and it's good.

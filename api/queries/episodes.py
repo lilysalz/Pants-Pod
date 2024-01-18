@@ -8,8 +8,10 @@ import os
 import httpx
 import base64
 
+
 class Error(BaseModel):
     message: str
+
 
 class SpotifyPodcast(BaseModel):
     podcast_id: str
@@ -19,11 +21,13 @@ class SpotifyPodcast(BaseModel):
     release_date: date
     url: str
 
+
 class ApplePodcast(BaseModel):
     podcast_id: str
     title: str
     release_date: date
     url: str
+
 
 class PodcastEpisode(BaseModel):
     id: int

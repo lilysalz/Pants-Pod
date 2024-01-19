@@ -1,11 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import admin, podcasts
+from routers import admin, episodes, accounts, liked
+from authenticator import authenticator
 import os
 
 app = FastAPI()
-app.include_router(podcasts.router)
-app.include_router(admin.router)
+app.include_router(episodes.router, tags=['Episodes'])
+app.include_router(admin.router, tags=["Admin"])
+app.include_router(authenticator.router, tags=['Auth'])
+app.include_router(accounts.router, tags=["Accounts"])
+app.include_router(liked.router, tags=["Liked"])
 
 
 app.add_middleware(
@@ -17,16 +21,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.get("/api/launch-details")
-def launch_details():
-    return {
-        "launch_details": {
-            "module": 3,
-            "week": 17,
-            "day": 5,
-            "hour": 19,
-            "min": "00"
-        }
-    }

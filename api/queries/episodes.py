@@ -1,44 +1,9 @@
 from pydantic import BaseModel
 from fastapi import HTTPException
-from typing import Union, List, Optional
-from datetime import date
 from queries.pool import pool
-from psycopg.types.json import Json
-import os
-import httpx
-import base64
-
-
-class Error(BaseModel):
-    message: str
-
-
-class SpotifyPodcast(BaseModel):
-    podcast_id: str
-    title: str
-    description: str
-    duration: int
-    release_date: date
-    url: str
-
-
-class ApplePodcast(BaseModel):
-    podcast_id: str
-    title: str
-    release_date: date
-    url: str
-
-
-class PodcastEpisode(BaseModel):
-    id: int
-    spotify_id: Optional[str]
-    apple_id: Optional[str]
-    title: Optional[str]
-    description: Optional[str]
-    duration: Optional[int]
-    release_date: Optional[date]
-    spotify_url: Optional[str]
-    apple_url: Optional[str]
+from models import(
+    PodcastEpisode,
+)
 
 
 class EpisodesRepository:

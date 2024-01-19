@@ -20,6 +20,7 @@ services:
             DATABASE_URL: postgresql://example_user:secret@postgres/example_db
             CLIENT_ID: ${CLIENT_ID}
             CLIENT_SECRET: ${CLIENT_SECRET}
+            SIGNING_KEY: ${SIGNING_KEY}
         build:
             context: api
             dockerfile: Dockerfile.dev

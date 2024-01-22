@@ -13,7 +13,7 @@ class EpisodesRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, spotify_id, apple_id, title, description, duration, release_date, spotify_url, apple_url
+                        SELECT spotify_id, apple_id, title, description, duration, release_date, spotify_url, apple_url
                         FROM episodes
                         ORDER BY release_date;
                         """
@@ -21,15 +21,14 @@ class EpisodesRepository:
                     result = []
                     for record in db:
                         record = PodcastEpisode(
-                            id=record[0],
-                            spotify_id=record[1],
-                            apple_id=record[2],
-                            title=record[3],
-                            description=record[4],
-                            duration=record[5],
-                            release_date=record[6],
-                            spotify_url=record[7],
-                            apple_url=record[8],
+                            spotify_id=record[0],
+                            apple_id=record[1],
+                            title=record[2],
+                            description=record[3],
+                            duration=record[4],
+                            release_date=record[5],
+                            spotify_url=record[6],
+                            apple_url=record[7],
                         )
                         result.append(record)
                     return result

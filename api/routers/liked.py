@@ -15,7 +15,7 @@ from queries.liked import (
 router = APIRouter()
 
 
-@router.post("/api/episodes/liked", response_model=LikedOut)
+@router.post("/api/episodes/liked/me", response_model=LikedOut)
 def create_liked_episode(
     liked_in: LikedIn,
     account_data: dict = Depends(authenticator.get_current_account_data),
@@ -24,11 +24,16 @@ def create_liked_episode(
     return repo.create_liked_episode(liked_in=liked_in, user_id=account_data['id'])
 
 
-@router.get("/api/episodes/liked", response_model=LikedList)
-def get_liked_episodes():
-    pass
+@router.get("/api/episodes/liked/me", response_model=LikedList)
+def get_liked_episodes(
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: LikedRepository = Depends()
+):
+    return {
+        "liked": repo.get_liked_episodes(user_id=account_data['id'])
+    }
 
 
-@router.delete("/api/episodes/liked", response_model=DeleteStatus)
+@router.delete("/api/episodes/liked/me", response_model=DeleteStatus)
 def delete_liked_episode():
     pass

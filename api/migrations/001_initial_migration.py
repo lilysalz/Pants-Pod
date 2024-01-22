@@ -3,8 +3,7 @@ steps = [
         # "Up" SQL statement
         """
         CREATE TABLE episodes (
-            id SERIAL PRIMARY KEY NOT NULL,
-            spotify_id VARCHAR(100) UNIQUE,
+            spotify_id VARCHAR(100) PRIMARY KEY,
             apple_id VARCHAR(100) UNIQUE,
             title VARCHAR(1000) UNIQUE,
             description TEXT,

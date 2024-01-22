@@ -61,7 +61,7 @@ steps = [
         """,
         # "Down" SQL statement
         """
-        DROP TABLE comments;
+        DROP TABLE tell_me_anything;
         """
     ]
 ]

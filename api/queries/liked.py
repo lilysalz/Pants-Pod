@@ -1,8 +1,11 @@
 from pydantic import BaseModel
 from fastapi import HTTPException
 from queries.pool import pool
+from typing import Union
 from models import (
-    LikedIn
+    LikedIn,
+    LikedList,
+    LikedOut
 )
 
 
@@ -31,8 +34,40 @@ class LikedRepository:
             print(e)
             return {'message': 'Couldn\'t like episode.'}
 
-    def get_liked_episodes():
-        pass
+    def get_liked_episodes(self, user_id: str):
+        print("hi")
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id, episode_id, user_id
+                        FROM liked_episodes
+                        WHERE user_id = %s
+                        """,
+                        [user_id]
+                    )
+                    results = []
+                    for record in db:
+                        #print(record)
+                        record = LikedOut(
+                            id=record[0],
+                            episode_id=record[1],
+                            user_id=record[2],
+                        )
+                        results.append(record)
+                        print(results)
+                    return results
+                    # return [
+                    #     LikedOut(
+                    #         id=record[0],
+                    #         episode_id=record[1],
+                    #         user_id=record[2],
+                    #     )
+                    #     for record in db
+                    # ]       
+        except Exception:
+            return {'message': 'Couldn\'t get a list of liked episodes'}
 
     def delete_liked_episode():
         pass

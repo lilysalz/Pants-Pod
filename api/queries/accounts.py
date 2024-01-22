@@ -2,8 +2,10 @@ import os
 from models import AccountIn, AccountOutWithHashedPassword
 from queries.pool import pool
 
+
 class DuplicateAccountError(ValueError):
     pass
+
 
 class AccountsQueries:
     def get(self, username: str):

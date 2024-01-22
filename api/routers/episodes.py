@@ -1,14 +1,7 @@
 from fastapi import APIRouter, Depends, Response, HTTPException
 from typing import List, Union, Optional
 from authenticator import authenticator
-from models import(
-    LikedIn,
-    LikedOut,
-    LikedList,
-    DeleteStatus,
-    Error
-)
-from queries.episodes import(
+from queries.episodes import (
     EpisodesRepository
 )
 

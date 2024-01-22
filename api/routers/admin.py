@@ -11,9 +11,10 @@ router = APIRouter()
 @router.post("/api/episodes/admin/get_podcast_data")#, response_model=Union[SpotifyPodcast, Error])
 async def get_podcast_data(
     repo: ThirdPartyRepository = Depends(),
-    ):
+):
     result = await repo.get_podcast_data()
     return result
+
 
 @router.delete("/api/episodes/admin/clear_episode_data")
 def clear_database(

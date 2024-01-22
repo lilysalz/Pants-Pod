@@ -1,3 +1,9 @@
+## January 19, 2024
+Today we finished backend auth! Finally! We all organized our code in pretty different ways. For example, I created a models.py file to keep all my models like the AccountForm and AccountToken classes (described in the JWTdown documentation) while Omari put them in the router file that was calling them. Since my computer was running slowly and Noah got all of his code to work, once I felt like I understood how to set up our backend auth, I decided to just adapt his code. Today has been a good exercise in understand how other people code opposed to just figuring out how I would get the 'right answer'.
+
+## January 18, 2024
+Today, the team worked on backend authentication. None of us had done it before, so we all wanted to try to set it up individually. This took a while but figured it was better for our learning experience. No one of us got ours to work yet so hopefully we will finish tomorrow. It took me so long to make any progress because I kept having to rebuild my docker images and my computer wouldn't function for a while after doing so. I've learned that I will need to get more memory on my computer in order to work efficiently on this project. 
+
 ## January 17, 2024
 
 Today I worked on:

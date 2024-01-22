@@ -7,33 +7,42 @@ class AccountIn(BaseModel):
     username: str
     password: str
 
+
 class AccountForm(BaseModel):
     username: str
     password: str
+
 
 class AccountOutWithHashedPassword(BaseModel):
     id: str
     username: str
     hashed_password: str
 
+
 class AccountOut(BaseModel):
     id: str
     username: str
 
+
 class AccountToken(Token):
     account: AccountOut
+
 
 class LikedIn(BaseModel):
     episode_id: str
 
+
 class LikedOut(LikedIn):
     user_id: str
+
 
 class LikedList(BaseModel):
     liked: list[LikedOut]
 
+
 class Error(BaseModel):
     message: str
+
 
 class SpotifyPodcast(BaseModel):
     podcast_id: str
@@ -61,6 +70,7 @@ class PodcastEpisode(BaseModel):
     release_date: date
     spotify_url: str
     apple_url: str
+
 
 class DeleteStatus(BaseModel):
     success: bool

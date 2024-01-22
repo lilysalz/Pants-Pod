@@ -8,7 +8,7 @@ from models import(
     DeleteStatus,
     Error
 )
-from queries.liked import(
+from queries.liked import (
     LikedRepository,
 )
 
@@ -23,9 +23,11 @@ def create_liked_episode(
 ):
     return repo.create_liked_episode(liked_in=liked_in, user_id=account_data['id'])
 
+
 @router.get("/api/episodes/liked", response_model=LikedList)
 def get_liked_episodes():
     pass
+
 
 @router.delete("/api/episodes/liked", response_model=DeleteStatus)
 def delete_liked_episode():

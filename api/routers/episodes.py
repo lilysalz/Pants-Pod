@@ -1,6 +1,4 @@
-from fastapi import APIRouter, Depends, Response, HTTPException
-from typing import List, Union, Optional
-from authenticator import authenticator
+from fastapi import APIRouter, Depends
 from queries.episodes import (
     EpisodesRepository
 )

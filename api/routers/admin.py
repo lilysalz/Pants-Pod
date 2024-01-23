@@ -1,14 +1,12 @@
-from fastapi import APIRouter, Depends, Response, HTTPException
-from typing import List, Union, Optional
-from queries.admin import(
-    Error,
+from fastapi import APIRouter, Depends
+from queries.admin import (
     ThirdPartyRepository
 )
 
 router = APIRouter()
 
 
-@router.post("/api/episodes/admin/get_podcast_data")#, response_model=Union[SpotifyPodcast, Error])
+@router.post("/api/episodes/admin/get_podcast_data")
 async def get_podcast_data(
     repo: ThirdPartyRepository = Depends(),
 ):

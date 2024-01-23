@@ -13,7 +13,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE users;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -28,7 +28,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE liked_episodes;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -46,11 +46,11 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE comments;
-        """
+        """,
     ],
     [
         """
-        CREATE TABLE tell_me_anything (
+        CREATE TABLE tell_us_anything (
             id SERIAL PRIMARY KEY NOT NULL,
             user_id INT,
             FOREIGN KEY (user_id) REFERENCES users(user_id),
@@ -61,7 +61,7 @@ steps = [
         """,
         # "Down" SQL statement
         """
-        DROP TABLE tell_me_anything;
-        """
-    ]
+        DROP TABLE tell_us_anything;
+        """,
+    ],
 ]

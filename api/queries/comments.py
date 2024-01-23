@@ -85,7 +85,7 @@ class CommentsRepo:
             print(e)
             return {'message': 'Couldn\'t get a list of comments'}
 
-    def delete_comments(self, episode_id: str, user_id: int, id: str) ->bool:
+    def delete_comments(self, episode_id: str, user_id: int, id: str) -> bool:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:

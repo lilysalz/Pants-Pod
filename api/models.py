@@ -76,33 +76,41 @@ class PodcastEpisode(BaseModel):
 class DeleteStatus(BaseModel):
     success: bool
 
+
 class CommentsIn(BaseModel):
     episode_id: str
     comment_text: str
     comment_datetime: date
 
+
 class CommentsOut(CommentsIn):
     id: str
     user_id: str
+
 
 class EpisodeCommentsOut(BaseModel):
     user_id: str
     comment_text: str
     comment_datetime: date
 
+
 class EpisodeCommentsList(BaseModel):
     comments: List[EpisodeCommentsOut]
+
 
 class CommentsList(BaseModel):
     comments: List[CommentsOut]
 
-class Tell_me_anythingIn(BaseModel):
+
+class Tell_us_anythingIn(BaseModel):
     submission_text: str
     submission_datetime: date
 
-class Tell_me_anythingOut(Tell_me_anythingIn):
+
+class Tell_us_anythingOut(Tell_us_anythingIn):
     id: str
     user_id: str
 
-class Tell_me_anythingList(BaseModel):
-    submission: List[Tell_me_anythingOut]
+
+class Tell_us_anythingList(BaseModel):
+    submission: List[Tell_us_anythingOut]

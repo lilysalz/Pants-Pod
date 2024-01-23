@@ -1,12 +1,5 @@
-from pydantic import BaseModel
-from fastapi import HTTPException
 from queries.pool import pool
-from typing import Union
-from models import (
-    LikedIn,
-    LikedList,
-    LikedOut
-)
+from models import LikedIn, LikedOut
 
 
 class LikedRepository:
@@ -35,39 +28,43 @@ class LikedRepository:
             return {'message': 'Couldn\'t like episode.'}
 
     def get_liked_episodes(self, user_id: str):
-        print("hi")
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
                         SELECT id, episode_id, user_id
                         FROM liked_episodes
-                        WHERE user_id = %s
+                        WHERE user_id = %s;
                         """,
                         [user_id]
                     )
                     results = []
                     for record in db:
-                        #print(record)
                         record = LikedOut(
                             id=record[0],
                             episode_id=record[1],
                             user_id=record[2],
                         )
                         results.append(record)
-                        print(results)
                     return results
-                    # return [
-                    #     LikedOut(
-                    #         id=record[0],
-                    #         episode_id=record[1],
-                    #         user_id=record[2],
-                    #     )
-                    #     for record in db
-                    # ]       
         except Exception:
             return {'message': 'Couldn\'t get a list of liked episodes'}
 
-    def delete_liked_episode():
-        pass
+    def delete_liked_episode(self, episode_id: str, user_id: int) -> bool:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM liked_episodes
+                        WHERE episode_id = %s AND user_id = %s
+                        RETURNING episode_id
+                        """,
+                        (episode_id, user_id)
+                    )
+                    result = db.fetchone()[0]
+                    return result is not None
+        except Exception as e:
+            print(e)
+            return False

@@ -61,7 +61,6 @@ class ApplePodcast(BaseModel):
 
 
 class PodcastEpisode(BaseModel):
-    id: str
     spotify_id: str
     apple_id: str
     title: str

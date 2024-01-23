@@ -1,5 +1,3 @@
-from pydantic import BaseModel
-from fastapi import HTTPException
 from queries.pool import pool
 from models import (
     PodcastEpisode,

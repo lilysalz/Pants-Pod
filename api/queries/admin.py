@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 from fastapi import HTTPException
-from typing import Union, List, Optional
-from datetime import date
 from queries.pool import pool
 from psycopg.types.json import Json
 import os
@@ -67,7 +65,7 @@ class ThirdPartyRepository:
                     try:
                         with pool.connection() as conn:
                             with conn.cursor() as db:
-                                result = db.execute(
+                                db.execute(
                                     """
                                     INSERT INTO episodes (
                                         spotify_id,

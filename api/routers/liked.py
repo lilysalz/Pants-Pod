@@ -1,12 +1,10 @@
-from fastapi import APIRouter, Depends, Response, HTTPException
-from typing import List, Union, Optional
+from fastapi import APIRouter, Depends
 from authenticator import authenticator
-from models import(
+from models import (
     LikedIn,
     LikedOut,
     LikedList,
-    DeleteStatus,
-    Error
+    DeleteStatus
 )
 from queries.liked import (
     LikedRepository,
@@ -21,7 +19,10 @@ def create_liked_episode(
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: LikedRepository = Depends()
 ):
-    return repo.create_liked_episode(liked_in=liked_in, user_id=account_data['id'])
+    return repo.create_liked_episode(
+        liked_in=liked_in,
+        user_id=account_data['id']
+        )
 
 
 @router.get("/api/episodes/liked/me", response_model=LikedList)
@@ -35,5 +36,14 @@ def get_liked_episodes(
 
 
 @router.delete("/api/episodes/liked/me", response_model=DeleteStatus)
-def delete_liked_episode():
-    pass
+def delete_liked_episode(
+    episode_id: str,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: LikedRepository = Depends(),
+) -> bool:
+    return {
+        "success": repo.delete_liked_episode(
+            episode_id=episode_id,
+            user_id=int(account_data['id'])
+            )
+    }

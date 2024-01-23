@@ -7,6 +7,8 @@ steps = [
             username VARCHAR(100) UNIQUE,
             password VARCHAR(100)
         );
+        INSERT INTO users(user_id, username)
+        VALUES (00000, 'anonymous');
         """,
         # "Down" SQL statement
         """
@@ -20,8 +22,7 @@ steps = [
             id SERIAL PRIMARY KEY NOT NULL,
             episode_id VARCHAR(100),
             user_id INT,
-            FOREIGN KEY (episode_id) REFERENCES episodes(spotify_id),
-            FOREIGN KEY (user_id) REFERENCES users(user_id)
+            FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
         );
         """,
         # "Down" SQL statement
@@ -35,9 +36,8 @@ steps = [
         CREATE TABLE comments (
             id SERIAL PRIMARY KEY NOT NULL,
             episode_id VARCHAR(100),
-            user_id INT,
-            FOREIGN KEY (episode_id) REFERENCES episodes(spotify_id),
-            FOREIGN KEY (user_id) REFERENCES users(user_id),
+            user_id INT DEFAULT 0,
+            FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET DEFAULT,
             comment_text TEXT,
             comment_datetime TIMESTAMP NOT NULL
                 DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')

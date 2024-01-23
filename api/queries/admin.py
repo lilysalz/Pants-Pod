@@ -90,6 +90,20 @@ class ThirdPartyRepository:
                         if track_info["next"]:
                             return await self.get_initial_spotify_data(api_url=track_info["next"])
                         else:
+                            try:
+                                with pool.connection() as conn:
+                                    with conn.cursor() as db:
+                                        db.execute(
+                                            """
+                                            ALTER TABLE liked_episodes
+                                                ADD CONSTRAINT fk_liked FOREIGN KEY (episode_id) REFERENCES episodes(spotify_id);
+                                            ALTER TABLE comments
+                                                ADD CONSTRAINT fk_comments FOREIGN KEY (episode_id) REFERENCES episodes(spotify_id);
+                                            """
+                                        )
+                            except Exception as e:
+                                print(e)
+                                return {'message': "Couldn't create foreign key relationship."}
                             return {'message': 'Spotify API call successful. Please verify data integrity.'}
                     except Exception as e:
                         print(e)
@@ -142,7 +156,9 @@ class ThirdPartyRepository:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        DELETE FROM episodes
+                        ALTER TABLE liked_episodes DROP CONSTRAINT fk_liked;
+                        ALTER TABLE comments DROP CONSTRAINT fk_comments;
+                        DELETE FROM episodes;
                         """
                     )
                     return True

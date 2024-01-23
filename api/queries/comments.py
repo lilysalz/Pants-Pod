@@ -1,5 +1,5 @@
 from queries.pool import pool
-from models import CommentsIn, CommentsOut
+from models import CommentsIn, CommentsOut, EpisodeCommentsOut
 
 
 class CommentsRepo:
@@ -58,6 +58,31 @@ class CommentsRepo:
                         results.append(record)
                     return results
         except Exception:
+            return {'message': 'Couldn\'t get a list of comments'}
+
+    def get_episode_comments(self, episode_id: str):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        SELECT user_id, comment_text, comment_datetime
+                        FROM comments
+                        WHERE episode_id = %s;
+                        """,
+                        [episode_id]
+                    )
+                    results = []
+                    for record in db:
+                        record = EpisodeCommentsOut(
+                            user_id=record[0],
+                            comment_text=record[1],
+                            comment_datetime=record[2]
+                        )
+                        results.append(record)
+                    return results
+        except Exception as e:
+            print(e)
             return {'message': 'Couldn\'t get a list of comments'}
 
     def delete_comments(self, episode_id: str, user_id: int, id: str) ->bool:

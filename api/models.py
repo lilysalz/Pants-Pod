@@ -85,6 +85,14 @@ class CommentsOut(CommentsIn):
     id: str
     user_id: str
 
+class EpisodeCommentsOut(BaseModel):
+    user_id: str
+    comment_text: str
+    comment_datetime: date
+
+class EpisodeCommentsList(BaseModel):
+    comments: List[EpisodeCommentsOut]
+
 class CommentsList(BaseModel):
     comments: List[CommentsOut]
 

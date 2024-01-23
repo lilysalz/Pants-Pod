@@ -4,6 +4,7 @@ from models import (
     CommentsIn,
     CommentsOut,
     CommentsList,
+    EpisodeCommentsList,
     DeleteStatus
 )
 from queries.comments import (
@@ -30,6 +31,15 @@ def get_comments(
 ):
     return {
         "comments": repo.get_comments(user_id=account_data['id'])
+    }
+
+@router.get("/api/comments/{episode_id}", response_model=EpisodeCommentsList)
+def get_episode_comments(
+    episode_id: str,
+    repo: CommentsRepo = Depends()
+):
+    return {
+        'comments': repo.get_episode_comments(episode_id=episode_id)
     }
 
 @router.delete("/api/comments/me", response_model=DeleteStatus)

@@ -6,6 +6,7 @@ class LikedRepository:
     def create_liked_episode(self, liked_in: LikedIn, user_id: str):
         liked = liked_in.dict()
         liked['user_id'] = user_id
+        print("**************", type(liked), liked)
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -15,14 +16,25 @@ class LikedRepository:
                             episode_id,
                             user_id
                             )
-                        VALUES (%s, %s)
+                        SELECT CAST(%(episode_id)s AS VARCHAR), %(user_id)s
+                        WHERE NOT EXISTS (
+                            SELECT 1
+                            FROM liked_episodes
+                            WHERE episode_id = %(episode_id)s
+                            AND user_id = %(user_id)s
+                        )
                         RETURNING id;
                         """,
-                        [liked['episode_id'], liked['user_id']]
+                        liked
                     )
                     get_result = result.fetchone()
-                    liked['id'] = str(get_result[0])
-                    return liked
+                    if get_result:
+                        liked['id'] = str(get_result[0])
+                        return liked
+                    else:
+                        return {
+                            'message': 'Like record already exists.'
+                        }
         except Exception as e:
             print(e)
             return {'message': 'Couldn\'t like episode.'}

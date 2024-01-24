@@ -89,6 +89,7 @@ class CommentsOut(CommentsIn):
 
 
 class EpisodeCommentsOut(BaseModel):
+    id: str
     user_id: str
     comment_text: str
     comment_datetime: date

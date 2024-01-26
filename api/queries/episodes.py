@@ -1,7 +1,5 @@
 from queries.pool import pool
-from models import (
-    PodcastEpisode,
-)
+from models import PodcastEpisode
 
 
 class EpisodesRepository:

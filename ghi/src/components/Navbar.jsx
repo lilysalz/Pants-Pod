@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import SignIn from './Signin'
+import EpisodeList from './Episodelist'
 
 const NavBar = () => {
     return (
@@ -20,6 +21,9 @@ const NavBar = () => {
                         </Nav.Link>
                         <Nav.Link as={Link} to="/SignIn">
                             SignIn
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/Episodes">
+                            EpisodeList
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

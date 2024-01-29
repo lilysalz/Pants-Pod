@@ -7,7 +7,7 @@ const Home = () => {
         <Card>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
-                <Card.Title>PANTSss</Card.Title>
+                <Card.Title>PANTS</Card.Title>
                 <Card.Text>
                     They met almost twenty years ago, playing best friends on
                     TV. They are still best friends, on TV and in the real

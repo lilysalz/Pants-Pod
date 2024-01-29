@@ -66,7 +66,7 @@ class CommentsRepo:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        SELECT user_id, comment_text, comment_datetime
+                        SELECT id, user_id, comment_text, comment_datetime
                         FROM comments
                         WHERE episode_id = %s;
                         """,
@@ -75,9 +75,10 @@ class CommentsRepo:
                     results = []
                     for record in db:
                         record = EpisodeCommentsOut(
-                            user_id=record[0],
-                            comment_text=record[1],
-                            comment_datetime=record[2]
+                            id=record[0],
+                            user_id=record[1],
+                            comment_text=record[2],
+                            comment_datetime=record[3]
                         )
                         results.append(record)
                     return results
@@ -85,7 +86,7 @@ class CommentsRepo:
             print(e)
             return {'message': 'Couldn\'t get a list of comments'}
 
-    def delete_comments(self, episode_id: str, user_id: int, id: str) ->bool:
+    def delete_comments(self, episode_id: str, user_id: int, id: str) -> bool:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:

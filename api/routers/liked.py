@@ -1,10 +1,12 @@
 from fastapi import APIRouter, Depends
+from typing import Union
 from authenticator import authenticator
 from models import (
     LikedIn,
     LikedOut,
     LikedList,
-    DeleteStatus
+    DeleteStatus,
+    Error
 )
 from queries.liked import (
     LikedRepository,
@@ -13,7 +15,7 @@ from queries.liked import (
 router = APIRouter()
 
 
-@router.post("/api/episodes/liked/me", response_model=LikedOut)
+@router.post("/api/episodes/liked/me", response_model=Union[LikedOut, Error])
 def create_liked_episode(
     liked_in: LikedIn,
     account_data: dict = Depends(authenticator.get_current_account_data),

@@ -5,7 +5,7 @@ export const pantsApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_API_HOST,
     }),
-    endpoints: () => ({
+    endpoints: (builder) => ({
         getAllEpisodes: builder.query({
             query: () => '/api/episodes'
         }),

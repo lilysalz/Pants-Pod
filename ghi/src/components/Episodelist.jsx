@@ -1,20 +1,16 @@
 import { useEffect, useState } from 'react'
+import { useGetAllEpisodesQuery } from '../app/apiSlice'
 
 function EpisodeList() {
-    const [episodes, setEpisodes] = useState([])
-    const getData = async () => {
-        const response = await fetch(`http://localhost:8000/api/episodes`)
+    const { data: episodes = [], error, isLoading } = useGetAllEpisodesQuery()
 
-        if (response.ok) {
-            const data = await response.json()
-            setEpisodes(data)
-            console.log(data)
-        }
+    if (isLoading) {
+        return <div>Loading...</div>
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
+    if (error) {
+        return <div>Error: {error.message}</div>
+    }
 
     return (
         <>

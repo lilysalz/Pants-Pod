@@ -14,7 +14,7 @@ const EpisodeList = () => {
                     <tr className="flex w-full">
                         <th>Title</th>
                         <th>Release Date</th>
-                        <th>Time</th>
+                        <th>Duration</th>
                         <th>Listen on Spotify</th>
                         <th>Listen on Apple</th>
                         <th>Like</th>

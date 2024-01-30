@@ -22,7 +22,7 @@ const NavBar = () => {
                         </Nav.Link>
 
                         <Nav.Link as={Link} to="/Episodes">
-                            EpisodeList
+                            Episodes
                         </Nav.Link>
                         {!account && <Nav.Link as={Link} to="/signUp">
                             SignUp

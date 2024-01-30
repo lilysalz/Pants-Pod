@@ -8,7 +8,7 @@ const EpisodeList = () => {
     if (isLoading) return <div>Loading....</div>
     return (
         <>
-            <h1>Pants Podcast Episodes</h1>
+            <h1>Pants Podc Episodes</h1>
             {/* <table className="text-left w-full">
                 <thead className="flex w-full">
                     <tr className="flex w-full">

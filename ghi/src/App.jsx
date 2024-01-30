@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './components/Home'
 import NavBar from './components/Navbar'
 import SignIn from './components/Signin'
-import Signup from './components/Signup'
+import SignUp from './components/Signup'
 import EpisodeList from './components/Episodelist'
 // All your environment variables in vite are in this object
 // console.table(import.meta.env)
@@ -31,7 +31,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/SignIn" element={<SignIn />} />
-                <Route path="/Signup" element={<Signup />} />
+                <Route path="/SignUp" element={<SignUp />} />
                 <Route path="/Episodes" element={<EpisodeList />} />
             </Routes>
         </Router>

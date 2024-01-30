@@ -7,18 +7,65 @@ export const pantsApi = createApi({
     }),
     endpoints: (builder) => ({
         getAllEpisodes: builder.query({
-            query: () => '/api/episodes'
+            query: () => '/api/episodes',
         }),
-        likeEpisode: builder.query({
+        likeEpisode: builder.mutation({
             query: () => ({
                 url: '/api/episodes/liked/me',
-                method: 'POST'
+                method: 'POST',
             }),
         }),
         getLikedEpisodes: builder.query({
-            query: () => '/api/episodes/liked/me'
+            query: () => '/api/episodes/liked/me',
+        }),
+        getToken: builder.query({
+            query: () => ({
+                url: '/token',
+                credentials: 'include',
+            }),
+            providesTags: ['Account'],
+        }),
+        logout: builder.mutation({
+            query: () => ({
+                url: '/token',
+                method: 'DELETE',
+                credentials: 'include',
+            }),
+            invalidatesTags: ['Account'],
+        }),
+        login: builder.mutation({
+            query: (info) => {
+                const formData = new FormData()
+                formData.append('username', info.username)
+                formData.append('password', info.password)
+
+                return {
+                    url: '/token',
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include',
+                }
+            },
+            invalidatesTags: ['Account'],
+        }),
+        signUp: builder.mutation({
+            query: (info) => {
+                return {
+                    url: '/api/accounts',
+                    method: 'POST',
+                    body: info,
+                }
+            }
         })
-    })
+    }),
 })
 
-export const { useGetAllEpisodesQuery } = pantsApi
+export const {
+    useGetAllEpisodesQuery,
+    useLikeEpisodeMutation,
+    useGetLikedEpisodesQuery,
+    useGetTokenQuery,
+    useLogoutMutation,
+    useLoginMutation,
+    useSignUpMutation,
+} = pantsApi

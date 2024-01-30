@@ -34,6 +34,7 @@ class AccountsQueries:
     def create(self, info: AccountIn, hashed_password: str):
         if self.get(username=info.username) is not None:
             raise DuplicateAccountError
+        print(info)
         account = info.dict()
         account['hashed_password'] = hashed_password
         try:

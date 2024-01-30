@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import SignIn from './Signin'
-import EpisodeList from './Episodelist'
+import { useGetTokenQuery, useLogoutMutation } from '../app/apiSlice'
 
 const NavBar = () => {
+    const { data: account } = useGetTokenQuery()
+    const [logout] = useLogoutMutation()
     return (
         <Navbar expand="lg" className="bg-body-tertiary mb-3">
             <Container>
@@ -19,12 +20,19 @@ const NavBar = () => {
                         <Nav.Link as={Link} to="/">
                             Home
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/SignIn">
-                            SignIn
-                        </Nav.Link>
+
                         <Nav.Link as={Link} to="/Episodes">
                             EpisodeList
                         </Nav.Link>
+                        {!account && <Nav.Link as={Link} to="/signUp">
+                            SignUp
+                        </Nav.Link>}
+                        {!account && (
+                            <Nav.Link as={Link} to="/SignIn">
+                                SignIn
+                            </Nav.Link>
+                        )}
+                        {account && <button onClick={logout}>SignOut</button>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

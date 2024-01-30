@@ -1,30 +1,59 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import './components.css'
-import { Link } from 'react-router-dom'
-import Signup from './Signup'
+import { useLoginMutation } from '../app/apiSlice'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function SignIn() {
+    const navigate = useNavigate('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState()
+    const [login, loginStatus] = useLoginMutation()
+    useEffect(() => {
+        if (loginStatus.isSuccess) navigate('/')
+        if (loginStatus.isError) {
+            setErrorMessage(loginStatus.error.data.detail)
+        }
+    }, [loginStatus])
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        login({
+            username,
+            password,
+        })
+    }
     return (
-        <Form className="centered">
+        <Form className="centered" onSubmit={handleSubmit}>
+            {errorMessage && (
+                <Alert key={'danger'} variant={'danger'}>
+                    {errorMessage}
+                </Alert>
+            )}
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="What you name is" />
+                <Form.Control
+                    type="text"
+                    placeholder="What you name is"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
                 <Form.Text className="text-muted">Put your pants on.</Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Remember me" />
-            </Form.Group>
-            <Button as={Link} to="/" variant="primary" type="submit">
+            <Button variant="primary" type="submit">
                 Login
             </Button>{' '}
-            <Button as={Link} to="/Signup" variant="primary" type="submit">
-                Signup
-            </Button>
         </Form>
     )
 }

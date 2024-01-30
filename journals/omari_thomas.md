@@ -67,6 +67,19 @@ Task: Studied figma, pytesting and algorithms
 DAY 10
 
 Story: We finally decided to arm up and venture into the forest to the North. Our breaths were in sync and we trusted
-each other. We believed nothing could stand in our way.
+each other. We believed nothing could stand in our way. We achieved success. I managed to help Noah with hunting a boar
+and Lily immediately started roasting it.
 
-Task: Started on front-end display and creating pytest.
+Task: We completed auth for frontend and now have a working webpage that uses redux store.
+
+01/30/24
+DAY 11
+
+Story: The chill of the morning woke me up. It had crept in and saturated my tent. I suspect the culprit is a rough
+squirrel messing with the leather I had used to cover my tent. Despite the distraction in the back of mind I
+ventured into the forest for yet another day with the team. Everyone's face were briming with cheer. They were
+eager to start the hunt. The camaraderie within the group was infectious, and soon my initial squirrel worries were
+replaced with excitement. We followed a narrow trail that wound its way through the dense foliage, each step bringing
+us closer to the unknown challenges that awaited us.
+
+Task: worked on Readme and some frontend.

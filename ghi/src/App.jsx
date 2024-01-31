@@ -30,9 +30,9 @@ function App() {
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/SignIn" element={<SignIn />} />
-                <Route path="/SignUp" element={<SignUp />} />
-                <Route path="/Episodes" element={<EpisodeList />} />
+                <Route path="/api/SignIn" element={<SignIn />} />
+                <Route path="/api/SignUp" element={<SignUp />} />
+                <Route path="/api/Episodes" element={<EpisodeList />} />
             </Routes>
         </Router>
     )

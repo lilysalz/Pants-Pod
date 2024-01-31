@@ -8,36 +8,39 @@ import { useGetTokenQuery, useLogoutMutation } from '../app/apiSlice'
 const NavBar = () => {
     const { data: account } = useGetTokenQuery()
     const [logout] = useLogoutMutation()
-    return (
-        <Navbar expand="lg" className="bg-body-tertiary mb-3">
-            <Container>
-                <Navbar.Brand as={Link} to="/">
-                    Pants
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/">
-                            Home
-                        </Nav.Link>
 
-                        <Nav.Link as={Link} to="/Episodes">
-                            Episodes
+    return (
+        <Navbar expand="lg" className="display-6 bg-body-tertiary mb-5">
+            <Navbar.Brand as={Link} to="/">
+                <h1 className="funkyheadPANTS">PANTS</h1>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link as={Link} to="/api/Episodes">
+                        Episodes
+                    </Nav.Link>
+                    {!account && (
+                        <Nav.Link as={Link} to="/api/SignUp">
+                            Sign Up
                         </Nav.Link>
-                        {!account && <Nav.Link as={Link} to="/signUp">
-                            SignUp
-                        </Nav.Link>}
-                        {!account && (
-                            <Nav.Link as={Link} to="/SignIn">
-                                SignIn
-                            </Nav.Link>
-                        )}
-                        {account && <button onClick={logout}>SignOut</button>}
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
+                    )}
+                    {!account && (
+                        <Nav.Link as={Link} to="/api/SignIn">
+                            Sign In
+                        </Nav.Link>
+                    )}
+                    {account && (
+                        <Nav.Link as={Link} to={logout} onClick={logout}>
+                            Log Out {account.account.username}
+                        </Nav.Link>
+                        // <button className="logout-button" onClick={logout}>
+                        //     Log out {account.account.username}
+                        // </button>
+                    )}
+                </Nav>
+            </Navbar.Collapse>
         </Navbar>
     )
 }
-
 export default NavBar

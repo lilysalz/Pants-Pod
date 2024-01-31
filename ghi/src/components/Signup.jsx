@@ -12,7 +12,7 @@ function SignUp() {
     const [password, setPassword] = useState('')
     const [samePassword, setSamePassword] = useState('')
     const [passMatch, setPassMatch] = useState(true)
-    console.log({ signUpStatus })
+
     // const handleSetSamePasswordChange = (e) => {
     //     const value = e.target.value;
     //     setSamePassword(value);
@@ -24,6 +24,7 @@ function SignUp() {
     //     }
     //     console.log(password, samePassword);
     // }
+
     useEffect(() => {
         if (signUpStatus.isSuccess) navigate('/')
     }, [signUpStatus])
@@ -52,10 +53,9 @@ function SignUp() {
                         aria-describedby="emailHelp"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                     />
-                    <div id="emailHelp" className="form-text">
-                        Make it unique.
-                    </div>
+                    <div id="emailHelp" className="form-text"></div>
                 </div>
                 {!passMatch && (
                     <Alert key={'warning'} variant={'warning'}>
@@ -80,7 +80,7 @@ function SignUp() {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="Passwordcheck" className="form-label">
-                        Same Password
+                        Confirm Password
                     </label>
                     <input
                         type="password"
@@ -99,10 +99,10 @@ function SignUp() {
                         required
                     />
                     <label className="form-check-label" htmlFor="exampleCheck1">
-                        I will not be a terible person
+                        I will not be a terrible person
                     </label>
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="sb-long">
                     Submit
                 </button>
             </form>

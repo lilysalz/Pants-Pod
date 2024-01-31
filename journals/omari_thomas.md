@@ -75,7 +75,7 @@ Task: We completed auth for frontend and now have a working webpage that uses re
 01/30/24
 DAY 11
 
-Story: The chill of the morning woke me up. It had crept in and saturated my tent. I suspect the culprit is a rough
+Story: The chill of the morning woke me up. It had crept in and saturated my tent. I suspect the culprit is a rogue
 squirrel messing with the leather I had used to cover my tent. Despite the distraction in the back of mind I
 ventured into the forest for yet another day with the team. Everyone's face were briming with cheer. They were
 eager to start the hunt. The camaraderie within the group was infectious, and soon my initial squirrel worries were

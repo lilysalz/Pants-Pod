@@ -9,7 +9,6 @@ const Home = () => {
     useEffect(() => {
         episodes()
     }, [])
-    console.log(result)
     if (!result['isSuccess']) {
         return <div>Loading...</div>
     }
@@ -17,7 +16,6 @@ const Home = () => {
     if (result['error']) {
         return <div>Error: {result['error']}</div>
     }
-    console.log(result.data)
     return (
         <>
             <div>

@@ -23,6 +23,9 @@ const NavBar = () => {
                     <Nav.Link as={Link} to="/CardedEpisodes">
                         CardedEpisodes
                     </Nav.Link>
+                    <Nav.Link as={Link} to="/LikedEpisodes">
+                        LikedEpisodes
+                    </Nav.Link>
                     {!account && (
                         <Nav.Link as={Link} to="/api/SignUp">
                             Sign Up

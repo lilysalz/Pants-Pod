@@ -5,7 +5,7 @@ from models import LikedIn, LikedOut
 class LikedRepository:
     def create_liked_episode(self, liked_in: LikedIn, user_id: str):
         liked = liked_in.dict()
-        liked['user_id'] = user_id
+        liked["user_id"] = user_id
         print("**************", type(liked), liked)
         try:
             with pool.connection() as conn:
@@ -25,19 +25,17 @@ class LikedRepository:
                         )
                         RETURNING id;
                         """,
-                        liked
+                        liked,
                     )
                     get_result = result.fetchone()
                     if get_result:
-                        liked['id'] = str(get_result[0])
+                        liked["id"] = str(get_result[0])
                         return liked
                     else:
-                        return {
-                            'message': 'Like record already exists.'
-                        }
+                        return {"message": "Like record already exists."}
         except Exception as e:
             print(e)
-            return {'message': 'Couldn\'t like episode.'}
+            return {"message": "Couldn't like episode."}
 
     def get_liked_episodes(self, user_id: str):
         try:
@@ -49,7 +47,7 @@ class LikedRepository:
                         FROM liked_episodes
                         WHERE user_id = %s;
                         """,
-                        [user_id]
+                        [user_id],
                     )
                     results = []
                     for record in db:
@@ -61,7 +59,7 @@ class LikedRepository:
                         results.append(record)
                     return results
         except Exception:
-            return {'message': 'Couldn\'t get a list of liked episodes'}
+            return {"message": "Couldn't get a list of liked episodes"}
 
     def delete_liked_episode(self, episode_id: str, user_id: int) -> bool:
         try:
@@ -73,7 +71,7 @@ class LikedRepository:
                         WHERE episode_id = %s AND user_id = %s
                         RETURNING episode_id
                         """,
-                        (episode_id, user_id)
+                        (episode_id, user_id),
                     )
                     result = db.fetchone()[0]
                     return result is not None

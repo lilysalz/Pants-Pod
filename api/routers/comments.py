@@ -18,9 +18,8 @@ def create_comments(
 
 
 @router.get(
-        "/api/episodes/comments/{episode_id}",
-        response_model=EpisodeCommentsList
-        )
+    "/api/episodes/comments/{episode_id}", response_model=EpisodeCommentsList
+)
 def get_episode_comments(episode_id: str, repo: CommentsRepo = Depends()):
     return {"comments": repo.get_episode_comments(episode_id=episode_id)}
 

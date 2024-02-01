@@ -1,7 +1,5 @@
 from fastapi import APIRouter, Depends
-from queries.episodes import (
-    EpisodesRepository
-)
+from queries.episodes import EpisodesRepository
 
 router = APIRouter()
 

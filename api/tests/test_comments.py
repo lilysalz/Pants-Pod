@@ -14,22 +14,22 @@ class MockCommentsRepo:
 
     """
 
-    def  get_episode_comments(self, episode_id: str):
+    def get_episode_comments(self, episode_id: str):
         return [
             CommentsOut(
                 episode_id=episode_id,
                 id=1,
                 user_id=1,
                 comment_text=1,
-                comment_datetime=2024/1/19
-                ),
+                comment_datetime=2024 / 1 / 19,
+            ),
             CommentsOut(
                 episode_id=episode_id,
                 id=1,
                 user_id=1,
                 comment_text=1,
-                comment_datetime=2024/1/19
-                ),
+                comment_datetime=2024 / 1 / 19,
+            ),
         ]
 
 
@@ -42,19 +42,16 @@ def test_get_comment():
     test the get episode comments endpoint
     """
     # Arrange
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
-    app.dependency_overrides[CommentsRepo
-    ] = MockCommentsRepo
-
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
+    app.dependency_overrides[CommentsRepo] = MockCommentsRepo
 
     # Act
     response = client.get("/api/episodes/comments/{episode_id}")
 
     # Assert
     assert response.status_code == 200
-
 
     # Clean up
     app.dependency_overrides = {}

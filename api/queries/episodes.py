@@ -30,4 +30,4 @@ class EpisodesRepository:
                     return result
         except Exception as e:
             print(e)
-            return {'message': 'Couldn\'t get a list of episodes'}
+            return {"message": "Couldn't get a list of episodes"}

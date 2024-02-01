@@ -40,7 +40,9 @@ class TellRepo:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        SELECT id, user_id, submission_text, submission_datetime
+                        SELECT id, user_id,
+                        submission_text,
+                        submission_datetime
                         FROM tell_us_anything
                         WHERE user_id = %s;
                         """,
@@ -65,7 +67,9 @@ class TellRepo:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        SELECT id, user_id, submission_text, submission_datetime
+                        SELECT id, user_id,
+                        submission_text,
+                        submission_datetime
                         FROM tell_us_anything
                         """,
                     )

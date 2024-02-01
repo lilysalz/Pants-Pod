@@ -1,7 +1,5 @@
 from fastapi import APIRouter, Depends
-from queries.admin import (
-    ThirdPartyRepository
-)
+from queries.admin import ThirdPartyRepository
 
 router = APIRouter()
 

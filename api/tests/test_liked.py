@@ -30,9 +30,9 @@ def test_get_liked():
     test the get liked episodes endpoint
     """
     # Arrange
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
     app.dependency_overrides[LikedRepository] = MockLikedRepository
 
     # Act

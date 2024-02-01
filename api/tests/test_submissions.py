@@ -14,20 +14,20 @@ class MockTellRepo:
 
     """
 
-    def  get_my_tell_us_anything(self, user_id: str):
+    def get_my_tell_us_anything(self, user_id: str):
         return [
             Tell_us_anythingOut(
                 id=1,
                 user_id=1,
                 submission_text=1,
-                submission_datetime=2024/1/19
-                ),
+                submission_datetime=2024 / 1 / 19,
+            ),
             Tell_us_anythingOut(
                 id=1,
                 user_id=1,
                 submission_text=1,
-                submission_datetime=2024/1/19
-                ),
+                submission_datetime=2024 / 1 / 19,
+            ),
         ]
 
 
@@ -40,19 +40,16 @@ def test_get_submission():
     test the get submissions endpoint
     """
     # Arrange
-    app.dependency_overrides[
-        authenticator.get_current_account_data
-    ] = fake_get_current_account_data
-    app.dependency_overrides[TellRepo
-    ] = MockTellRepo
-
+    app.dependency_overrides[authenticator.get_current_account_data] = (
+        fake_get_current_account_data
+    )
+    app.dependency_overrides[TellRepo] = MockTellRepo
 
     # Act
     response = client.get("/api/tell_us_anything/me")
 
     # Assert
     assert response.status_code == 200
-
 
     # Clean up
     app.dependency_overrides = {}

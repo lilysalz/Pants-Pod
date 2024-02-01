@@ -1,20 +1,37 @@
 import { useState, useEffect } from 'react'
-import { useGetAllEpisodesQuery } from '../app/apiSlice'
+import {
+    useLazyGetAllEpisodesQuery,
+    useLazyGetLikedEpisodesQuery,
+    useGetTokenQuery,
+} from '../app/apiSlice'
+import PantsHeart from './PantsHeart'
+import PantsLogin from '../imgs/pants.min.svg?react'
 
 function EpisodeList() {
-    const { data: episodes = [], error, isLoading } = useGetAllEpisodesQuery()
+    const { data: account } = useGetTokenQuery()
+    const [episodes, result] = useLazyGetAllEpisodesQuery()
     const [eps, setEps] = useState([])
-
+    const [liked] = useLazyGetLikedEpisodesQuery()
+    const [likedEpisodes, setLikedEpisodes] = useState([])
     useEffect(() => {
-        setEps(getRevEps(episodes))
-    }, [episodes])
+        episodes()
+            .unwrap()
+            .then((data) => setEps(getRevEps(data)))
+    }, [])
+    useEffect(() => {
+        liked()
+            .unwrap()
+            .then((data) =>
+                setLikedEpisodes(data.liked.map((a) => a.episode_id))
+            )
+    }, [])
 
-    if (isLoading) {
+    if (result['isLoading']) {
         return <div>Loading...</div>
     }
 
-    if (error) {
-        return <div>Error: {error.message}</div>
+    if (result['error']) {
+        return <div>Error: {result['error']}</div>
     }
 
     function getDuration(duration) {
@@ -65,41 +82,51 @@ function EpisodeList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {eps.map((episode) => (
-                            <tr key={episode.spotify_id}>
-                                <td>{episode.title}</td>
-                                <td>{getDate(episode.release_date)}</td>
-                                <td>{getDuration(episode.duration)}</td>
-                                <td>
-                                    <a href={episode.spotify_url}>
-                                        <img
-                                            src="/spotify_logo.png"
-                                            alt="spotify_logo"
-                                            height={40}
-                                            width={40}
-                                        />
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href={episode.apple_url}>
-                                        <img
-                                            src="/apple_logo.png"
-                                            alt="apple_logo"
-                                            height={40}
-                                            width={40}
-                                        />
-                                    </a>
-                                </td>
-                                <td>
-                                    <div className="custom-control custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            className="custom-control-input"
-                                        />
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
+                        {eps.map((episode) => {
+                            const lE = likedEpisodes.includes(
+                                episode.spotify_id
+                            )
+                                ? true
+                                : false;
+                            return (
+                                <tr key={episode.spotify_id}>
+                                    <td>{episode.title}</td>
+                                    <td>{getDate(episode.release_date)}</td>
+                                    <td>{getDuration(episode.duration)}</td>
+                                    <td>
+                                        <a href={episode.spotify_url}>
+                                            <img
+                                                src="/spotify_logo.png"
+                                                alt="spotify_logo"
+                                                height={40}
+                                                width={40}
+                                            />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href={episode.apple_url}>
+                                            <img
+                                                src="/apple_logo.png"
+                                                alt="apple_logo"
+                                                height={40}
+                                                width={40}
+                                            />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {account ? (
+                                            <PantsHeart
+                                                lE={lE}
+                                                key={episode.spotify_id}
+                                                episode_id={episode.spotify_id}
+                                            />
+                                        ) : (
+                                            <PantsLogin />
+                                        )}
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>

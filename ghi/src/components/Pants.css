@@ -1,0 +1,237 @@
+@keyframes pants-to-heart {
+    0%,
+    35% {
+        d: path(
+            'M197.762,9.82333 L211,10 L225,10 L239,10 L252,10 L266,10 L279,10 L293,10 L306.737,9.82333 L310,29 L314,48 L317,67 L320.392,86.6611 L320.392,86.6611 L325,109 L329,132 L333,155 L337,177 L341,200 L345,223 L349,246 L353,268 L357,291 L361,314 L365,337 L369,359 L373,382 L377,404 L381,427 L384.886,449.628 L362,453 L340,457 L317,461 L294.945,464.897 L288,447 L282,430 L276,413 L270,396 L264,379 L258,362 L252,345 L246,327 L240,310 L234,293 L228,276 L222,258 L216,241 L210,224 L204,207 L197.781,189.899 L191,207 L185,224 L179,241 L173,258 L167,276 L161,293 L155,310 L149,327 L143,345 L137,362 L131,379 L125,396 L119,413 L113,430 L107,447 L100.617,464.897 L78,461 L56,457 L33,453 L10.6756,449.628 L15,427 L19,404 L23,382 L27,359 L31,337 L35,314 L39,291 L43,268 L47,246 L51,223 L55,200 L59,177 L63,155 L67,132 L71,109 L75.1732,86.6611 L79,67 L82,48 L85,29 L88.8286,9.82333 L102,10 L116,10 L130,10 L143,10 L170,10 L184,10 L197.762,9.82333'
+        );
+        fill: #e8dfb0;
+    }
+    55%,
+    100% {
+        d: path(
+            'M211,87 L218,83 L225,78 L233,75 L241,72 L249,70 L258,68 L267,67 L275.201,66.52818 L275,67 L280,67 L284,67 L288,67 L292,68 L297,69 L301,70 L305,71 L309,72 L313,73 L317,75 L321,77 L325,79 L329,81 L333,83 L336,85 L340,88 L343,90 L347,93 L350,96 L353,99 L359,105 L364,112 L369,120 L373,127 L377,135 L380,143 L382,151 L384,160 L385,168 L385,176 L384,185 L383,194 L380,204 L377,213 L373,222 L369,230 L365,238 L360,245 L356,250 L352.866,254.027 L197.535,409.354 L120.357,332.176 L119.874,331.688 L43,255 L39,250 L35,245 L31,238 L27,231 L23,222 L19,213 L15,204 L13,195 L11,186 L11,177 L11,168 L12,160 L13,152 L16,144 L19,136 L22,128 L26,120 L31,113 L37,106 L43,99 L49,93 L56,88 L64,83 L71,79 L79,75 L87,72 L95,70 L104,68 L112,67 L120,67 L129,67 L137,68 L145,70 L154,72 L162,75 L170,79 L177,83 L184,88 L191,93 L198.023,99.1833 L198,99 L204,93 L211,87'
+        );
+        fill: #c01400;
+        stroke: #7bcd84;
+    }
+}
+.heart.active #pants-path0 {
+    animation: pants-to-heart 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeOut1 {
+    0%,
+    25% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.heart.active #pants-path1 {
+    animation: fadeOut1 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeOut2 {
+    0%,
+    25% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.heart.active #pants-path2 {
+    animation: fadeOut2 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeOut3 {
+    0%,
+    25% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.heart.active #pants-path3 {
+    animation: fadeOut3 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeOut4 {
+    0%,
+    25% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.heart.active #pants-path4 {
+    animation: fadeOut4 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeOut5 {
+    0%,
+    25% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.heart.active #pants-path5 {
+    animation: fadeOut5 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeOut6 {
+    0%,
+    25% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.heart.active #pants-path6 {
+    animation: fadeOut6 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+/* ________________________________________ */
+
+@keyframes heart-to-pants {
+    0%,
+    35% {
+        d: path(
+            'M211,87 L218,83 L225,78 L233,75 L241,72 L249,70 L258,68 L267,67 L275.201,66.52818 L275,67 L280,67 L284,67 L288,67 L292,68 L297,69 L301,70 L305,71 L309,72 L313,73 L317,75 L321,77 L325,79 L329,81 L333,83 L336,85 L340,88 L343,90 L347,93 L350,96 L353,99 L359,105 L364,112 L369,120 L373,127 L377,135 L380,143 L382,151 L384,160 L385,168 L385,176 L384,185 L383,194 L380,204 L377,213 L373,222 L369,230 L365,238 L360,245 L356,250 L352.866,254.027 L197.535,409.354 L120.357,332.176 L119.874,331.688 L43,255 L39,250 L35,245 L31,238 L27,231 L23,222 L19,213 L15,204 L13,195 L11,186 L11,177 L11,168 L12,160 L13,152 L16,144 L19,136 L22,128 L26,120 L31,113 L37,106 L43,99 L49,93 L56,88 L64,83 L71,79 L79,75 L87,72 L95,70 L104,68 L112,67 L120,67 L129,67 L137,68 L145,70 L154,72 L162,75 L170,79 L177,83 L184,88 L191,93 L198.023,99.1833 L198,99 L204,93 L211,87'
+        );
+        fill: #c01400;
+        stroke: #7bcd84;
+    }
+    55%,
+    100% {
+        d: path(
+            'M197.762,9.82333 L211,10 L225,10 L239,10 L252,10 L266,10 L279,10 L293,10 L306.737,9.82333 L310,29 L314,48 L317,67 L320.392,86.6611 L320.392,86.6611 L325,109 L329,132 L333,155 L337,177 L341,200 L345,223 L349,246 L353,268 L357,291 L361,314 L365,337 L369,359 L373,382 L377,404 L381,427 L384.886,449.628 L362,453 L340,457 L317,461 L294.945,464.897 L288,447 L282,430 L276,413 L270,396 L264,379 L258,362 L252,345 L246,327 L240,310 L234,293 L228,276 L222,258 L216,241 L210,224 L204,207 L197.781,189.899 L191,207 L185,224 L179,241 L173,258 L167,276 L161,293 L155,310 L149,327 L143,345 L137,362 L131,379 L125,396 L119,413 L113,430 L107,447 L100.617,464.897 L78,461 L56,457 L33,453 L10.6756,449.628 L15,427 L19,404 L23,382 L27,359 L31,337 L35,314 L39,291 L43,268 L47,246 L51,223 L55,200 L59,177 L63,155 L67,132 L71,109 L75.1732,86.6611 L79,67 L82,48 L85,29 L88.8286,9.82333 L102,10 L116,10 L130,10 L143,10 L170,10 L184,10 L197.762,9.82333'
+        );
+        fill: #e8dfb0;
+    }
+}
+.heart:not(.active) #pants-path0 {
+    animation: heart-to-pants 1.2s forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeIn1 {
+    0%,
+    25% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+.heart:not(.active) #pants-path1 {
+    animation: fadeIn1 1.2s forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeIn2 {
+    0%,
+    25% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+.heart:not(.active) #pants-path2 {
+    animation: fadeIn2 1.2s forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeIn3 {
+    0%,
+    25% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+.heart:not(.active) #pants-path3 {
+    animation: fadeIn3 1.2s forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeIn4 {
+    0%,
+    25% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+.heart:not(.active) #pants-path4 {
+    animation: fadeIn4 1.2s forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeIn5 {
+    0%,
+    25% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+.heart:not(.active) #pants-path5 {
+    animation: fadeIn5 1.2s forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fadeIn6 {
+    0%,
+    25% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+.heart:not(.active) #pants-path6 {
+    animation: fadeIn6 1.2s forwards;
+    animation-timing-function: ease-out;
+}

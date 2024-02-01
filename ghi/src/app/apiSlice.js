@@ -10,13 +10,18 @@ export const pantsApi = createApi({
             query: () => '/api/episodes',
         }),
         likeEpisode: builder.mutation({
-            query: () => ({
+            query: (info) => ({
                 url: '/api/episodes/liked/me',
                 method: 'POST',
+                body: info,
+                credentials: 'include'
             }),
         }),
         getLikedEpisodes: builder.query({
-            query: () => '/api/episodes/liked/me',
+            query: () => ({
+                url: '/api/episodes/liked/me',
+                credentials: 'include'
+            })
         }),
         getToken: builder.query({
             query: () => ({
@@ -61,9 +66,9 @@ export const pantsApi = createApi({
 })
 
 export const {
-    useGetAllEpisodesQuery,
+    useLazyGetAllEpisodesQuery,
     useLikeEpisodeMutation,
-    useGetLikedEpisodesQuery,
+    useLazyGetLikedEpisodesQuery,
     useGetTokenQuery,
     useLogoutMutation,
     useLoginMutation,

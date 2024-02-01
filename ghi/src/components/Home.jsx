@@ -40,11 +40,11 @@ const Home = () => {
                     They met almost twenty years ago, playing best friends on
                     TV. They are still best friends, on TV and in the real
                     World.
-                    <br></br>
-                    <br></br>
+                    <br />
+                    <br />
                     But the lines are blurred.
-                    <br></br>
-                    <br></br>
+                    <br />
+                    <br />
                     Where does film end + the real world begin?
                 </p>
             </div>
@@ -52,50 +52,31 @@ const Home = () => {
                 <Card.Body>
                     <Card.Title>
                         <h1 className="default-text-bold">
-                            Catch up on this weeks episode!
+                            Catch up on this week's episode!
                         </h1>
                     </Card.Title>
-                    <Card.Text>
-                        <>
-                            <p className="default-text-bold">
-                                {result.data[result.data.length - 1].title}
-                            </p>
-                            <p>
-                                {
-                                    result.data[result.data.length - 1]
-                                        .description
-                                }
-                            </p>
-                            <a
-                                href={
-                                    result.data[result.data.length - 1]
-                                        .spotify_url
-                                }
-                            >
-                                <img
-                                    className="homeimgs"
-                                    src="/spotify_logo.png"
-                                    alt="spotify_logo"
-                                    height={100}
-                                    width={100}
-                                />
-                            </a>
-                            <a
-                                href={
-                                    result.data[result.data.length - 1]
-                                        .apple_url
-                                }
-                            >
-                                <img
-                                    className="homeimgs"
-                                    src="/apple_logo.png"
-                                    alt="apple_logo"
-                                    height={100}
-                                    width={100}
-                                />
-                            </a>
-                        </>
-                    </Card.Text>
+                    <div className="default-text-bold">
+                        {result.data[result.data.length - 1].title}
+                    </div>
+                    <div>{result.data[result.data.length - 1].description}</div>
+                    <a href={result.data[result.data.length - 1].spotify_url}>
+                        <img
+                            className="homeimgs"
+                            src="/spotify_logo.png"
+                            alt="spotify_logo"
+                            height={100}
+                            width={100}
+                        />
+                    </a>
+                    <a href={result.data[result.data.length - 1].apple_url}>
+                        <img
+                            className="homeimgs"
+                            src="/apple_logo.png"
+                            alt="apple_logo"
+                            height={100}
+                            width={100}
+                        />
+                    </a>
                 </Card.Body>
             </Card>
         </>

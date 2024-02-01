@@ -23,14 +23,16 @@ const Search = () => {
                         onChange={(e) => setQueryInput(e.target.value)}
                     />
                 </Form.Group>
+                <Form.Text className="text-muted">
+                    ...Search by Title or Date (yyyy-mm-dd)
+                </Form.Text>
             </div>
             <div className="col">
                 <Button variant="primary" type="submit">
                     Search
                 </Button>
                 <Button
-                    className="btn btn-lg btn-link"
-                    type="button"
+                    variant="link"
                     onClick={() => {
                         setQueryInput('')
                         dispatch(reset())

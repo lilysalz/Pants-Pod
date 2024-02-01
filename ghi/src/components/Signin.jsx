@@ -5,6 +5,7 @@ import './components.css'
 import { useLoginMutation } from '../app/apiSlice'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function SignIn() {
     const navigate = useNavigate('')
@@ -26,35 +27,44 @@ function SignIn() {
         })
     }
     return (
-        <Form className="centered" onSubmit={handleSubmit}>
-            {errorMessage && (
-                <Alert key={'danger'} variant={'danger'}>
-                    {errorMessage}
-                </Alert>
-            )}
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="What you name is"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <Form.Text className="text-muted">Put your pants on.</Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Login
-            </Button>{' '}
-        </Form>
+        <>
+            <Form className="centered" onSubmit={handleSubmit}>
+                {errorMessage && (
+                    <Alert key={'danger'} variant={'danger'}>
+                        {errorMessage}
+                    </Alert>
+                )}
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <Form.Text className="text-muted">
+                        Put your pants on.
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </Form.Group>
+                <Button className="sb-long" type="submit">
+                    Login
+                </Button>{' '}
+                <br></br> <br></br> <br></br> <br></br>
+                <p>Don't have an account?</p>
+                <Link to="/api/signup">
+                    <Button className="sb-long">Sign Up</Button>{' '}
+                </Link>
+            </Form>
+        </>
     )
 }
 

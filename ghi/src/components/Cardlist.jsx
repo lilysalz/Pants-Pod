@@ -1,12 +1,21 @@
-import { useGetAllEpisodesQuery } from '../app/apiSlice'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Container from 'react-bootstrap/Container'
 import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import {
+    useLazyGetAllEpisodesQuery,
+    useLazyGetLikedEpisodesQuery,
+    useGetTokenQuery,
+} from '../app/apiSlice'
 
 function CardList() {
     const query = useSelector((state) => state.query.value)
-    const { data: episodes = [], error, isLoading } = useGetAllEpisodesQuery()
+    const {
+        data: episodes = [],
+        error,
+        isLoading,
+    } = useLazyGetAllEpisodesQuery()
 
     if (isLoading) {
         return <div>Loading...</div>

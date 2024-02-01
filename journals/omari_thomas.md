@@ -83,3 +83,13 @@ replaced with excitement. We followed a narrow trail that wound its way through 
 us closer to the unknown challenges that awaited us.
 
 Task: worked on Readme and some frontend.
+
+01/31/24
+DAY 12
+
+Story: I tumbled down a slope and got separated from the team. However, I was stil able to bring home a game to the camp.
+
+Task: Aded a episode page that was carded and introduced the querysplicing from redux.
+
+02/01/24
+DAY 13

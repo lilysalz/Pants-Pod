@@ -11,18 +11,31 @@ import {
 
 function CardList() {
     const query = useSelector((state) => state.query.value)
-    const {
-        data: episodes = [],
-        error,
-        isLoading,
-    } = useLazyGetAllEpisodesQuery()
+    const { data: account } = useGetTokenQuery()
+    const [episodes, result] = useLazyGetAllEpisodesQuery()
+    const [eps, setEps] = useState([])
+    const [liked] = useLazyGetLikedEpisodesQuery()
+    const [likedEpisodes, setLikedEpisodes] = useState([])
+    useEffect(() => {
+        episodes()
+            .unwrap()
+            .then((data) => setEps(getRevEps(data)))
+    }, [])
+    console.log(setEps)
+    useEffect(() => {
+        liked()
+            .unwrap()
+            .then((data) =>
+                setLikedEpisodes(data.liked.map((a) => a.episode_id))
+            )
+    }, [])
 
-    if (isLoading) {
+    if (result['isLoading']) {
         return <div>Loading...</div>
     }
 
-    if (error) {
-        return <div>Error: {error.message}</div>
+    if (result['error']) {
+        return <div>Error: {result['error']}</div>
     }
 
     function getDuration(duration) {
@@ -33,16 +46,33 @@ function CardList() {
         return newDuration
     }
 
+    function getDate(date) {
+        date = new Date(date)
+        let text = date.toDateString()
+        return text
+    }
+
+    function getRevEps(episodes) {
+        let revEps = [...episodes].reverse()
+        return revEps
+    }
+
+    function reverseEps() {
+        setEps((prevEps) =>
+            prevEps === episodes ? getRevEps(episodes) : episodes
+        )
+    }
+
     const filteredData = () => {
         if (query) {
-            return episodes.filter(
+            return eps.filter(
                 (episode) =>
                     episode.title.includes(query) ||
                     episode.release_date.includes(query)
             )
         }
 
-        return episodes
+        return eps
     }
     return (
         <>

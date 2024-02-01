@@ -8,16 +8,16 @@ const Home = () => {
     const [episodes, result] = useLazyGetAllEpisodesQuery()
     useEffect(() => {
         episodes()
-    },[])
-    console.log(result);
-    if (!result["isSuccess"]) {
+    }, [])
+    console.log(result)
+    if (!result['isSuccess']) {
         return <div>Loading...</div>
     }
 
-    if (result["error"]) {
-        return <div>Error: {result["error"]}</div>
+    if (result['error']) {
+        return <div>Error: {result['error']}</div>
     }
-    console.log(result.data);
+    console.log(result.data)
     return (
         <>
             <div>
@@ -62,8 +62,18 @@ const Home = () => {
                             <p className="default-text-bold">
                                 {result.data[result.data.length - 1].title}
                             </p>
-                            <p>{result.data[result.data.length - 1].description}</p>
-                            <a href={result.data[result.data.length - 1].spotify_url}>
+                            <p>
+                                {
+                                    result.data[result.data.length - 1]
+                                        .description
+                                }
+                            </p>
+                            <a
+                                href={
+                                    result.data[result.data.length - 1]
+                                        .spotify_url
+                                }
+                            >
                                 <img
                                     className="homeimgs"
                                     src="/spotify_logo.png"
@@ -72,7 +82,12 @@ const Home = () => {
                                     width={100}
                                 />
                             </a>
-                            <a href={result.data[result.data.length - 1].apple_url}>
+                            <a
+                                href={
+                                    result.data[result.data.length - 1]
+                                        .apple_url
+                                }
+                            >
                                 <img
                                     className="homeimgs"
                                     src="/apple_logo.png"

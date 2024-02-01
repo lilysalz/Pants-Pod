@@ -3,14 +3,15 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import EpisodeList from './Episodelist'
 import Search from './Search'
+import CardList from './Cardlist'
 
-const Home = () => {
+const CardEpisodelist = () => {
     return (
         <>
             <Search />
-            <EpisodeList />
+            <CardList />
         </>
     )
 }
 
-export default Home
+export default CardEpisodelist

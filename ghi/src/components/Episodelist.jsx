@@ -1,6 +1,8 @@
 import { useGetAllEpisodesQuery } from '../app/apiSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 function EpisodeList() {
+    const query = useSelector((state) => state.query.value)
     const { data: episodes = [], error, isLoading } = useGetAllEpisodesQuery()
 
     if (isLoading) {
@@ -19,6 +21,13 @@ function EpisodeList() {
         return newDuration
     }
 
+    const filteredData = () => {
+        if (query) {
+            return episodes.filter((episode) => episode.title.includes(query))
+        }
+
+        return episodes
+    }
     return (
         <>
             <div>
@@ -37,7 +46,7 @@ function EpisodeList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {episodes.map((episode) => (
+                        {filteredData().map((episode) => (
                             <tr key={episode.spotify_id}>
                                 <td>{episode.title}</td>
                                 <td>{episode.release_date}</td>

@@ -1,4 +1,12 @@
-## January 26, 2023
+## January 31st, 2023
+
+Today I formatted the home page, nav bar, sign up, and log in pages.
+
+## January 30th, 2023
+
+Today, I made the episodes list page. I added a feature to sort the episodes. Originally, the episodes were listed out with headers for title, release date, duration, a spotify url, apple url, and a like button. 
+
+## January 29, 2023
 
 Today I finally got the unit test on the get method for liked episodes to run!
 

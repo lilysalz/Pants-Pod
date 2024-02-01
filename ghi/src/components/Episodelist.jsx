@@ -13,11 +13,13 @@ function EpisodeList() {
     const [eps, setEps] = useState([])
     const [liked] = useLazyGetLikedEpisodesQuery()
     const [likedEpisodes, setLikedEpisodes] = useState([])
+
     useEffect(() => {
         episodes()
             .unwrap()
             .then((data) => setEps(getRevEps(data)))
     }, [])
+
     useEffect(() => {
         liked()
             .unwrap()
@@ -48,15 +50,13 @@ function EpisodeList() {
         return text
     }
 
-    function getRevEps(episodes) {
-        let revEps = [...episodes].reverse()
+    function getRevEps(eps) {
+        let revEps = [...eps].reverse()
         return revEps
     }
 
     function reverseEps() {
-        setEps((prevEps) =>
-            prevEps === episodes ? getRevEps(episodes) : episodes
-        )
+        setEps((prevEps) => (prevEps === eps ? getRevEps(eps) : eps))
     }
 
     return (
@@ -87,7 +87,7 @@ function EpisodeList() {
                                 episode.spotify_id
                             )
                                 ? true
-                                : false;
+                                : false
                             return (
                                 <tr key={episode.spotify_id}>
                                     <td>{episode.title}</td>

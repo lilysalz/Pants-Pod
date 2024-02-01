@@ -14,14 +14,21 @@ export const pantsApi = createApi({
                 url: '/api/episodes/liked/me',
                 method: 'POST',
                 body: info,
-                credentials: 'include'
+                credentials: 'include',
+            }),
+        }),
+        deleteLikeEpisode: builder.mutation({
+            query: (id) => ({
+                url: `/api/episodes/liked/me?episode_id=${id}`,
+                method: 'DELETE',
+                credentials: 'include',
             }),
         }),
         getLikedEpisodes: builder.query({
             query: () => ({
                 url: '/api/episodes/liked/me',
-                credentials: 'include'
-            })
+                credentials: 'include',
+            }),
         }),
         getToken: builder.query({
             query: () => ({
@@ -60,14 +67,15 @@ export const pantsApi = createApi({
                     method: 'POST',
                     body: info,
                 }
-            }
-        })
+            },
+        }),
     }),
 })
 
 export const {
     useLazyGetAllEpisodesQuery,
     useLikeEpisodeMutation,
+    useDeleteLikeEpisodeMutation,
     useLazyGetLikedEpisodesQuery,
     useGetTokenQuery,
     useLogoutMutation,

@@ -3,8 +3,8 @@ import { useGetAllEpisodesQuery } from '../app/apiSlice'
 import { EpisodeCard } from './EpisodeCard'
 
 const EpisodeList = () => {
-    const {data, isLoading} = useGetAllEpisodesQuery()
-    console.log({ data, isLoading })
+    const { data, isLoading } = useGetAllEpisodesQuery()
+
     if (isLoading) return <div>Loading....</div>
     return (
         <>
@@ -30,4 +30,4 @@ const EpisodeList = () => {
     )
 }
 
-export default EpisodeList();
+export default EpisodeList()

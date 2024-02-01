@@ -21,11 +21,13 @@ function EpisodeList() {
     }, [])
 
     useEffect(() => {
-        liked()
-            .unwrap()
-            .then((data) =>
-                setLikedEpisodes(data.liked.map((a) => a.episode_id))
-            )
+        if (account) {
+            liked()
+                .unwrap()
+                .then((data) =>
+                    setLikedEpisodes(data.liked.map((a) => a.episode_id))
+                )
+        }
     }, [])
 
     if (result['isLoading']) {

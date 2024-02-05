@@ -39,7 +39,7 @@ async def create_account(
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Cannot create an account with those credentials.",
+            detail="This username is already taken.  Please try again.",
         )
     form = AccountForm(username=info.username, password=info.password)
     token = await authenticator.login(response, request, form, repo)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SVG3 from '../imgs/trans_svg.svg?react'
 import './Pants.css'
 import {
@@ -7,6 +7,21 @@ import {
 } from '../app/apiSlice'
 
 function PantsHeart({ lE, episode_id }) {
+    // const revealAnim = () => {
+    //     document.body.classList = ''
+    // }
+    // const hideAnim = () => {
+    //     document.body.classList = 'preload'
+    // }
+    // useEffect(() => {
+    //     console.log('did load');
+    //     console.log('asdf');
+    //     revealAnim();
+    //     console.log('reveaile');
+    //     return () => {
+    //         hideAnim()
+    //     }
+    // }, [])
     const [like, likeStatus] = useLikeEpisodeMutation()
     const [unLike, unLikeStatus] = useDeleteLikeEpisodeMutation()
     const [heart, setIsHeart] = useState(lE)

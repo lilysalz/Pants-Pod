@@ -7,11 +7,14 @@ import Alert from 'react-bootstrap/Alert'
 
 function SignUp() {
     const [signUp, signUpStatus] = useSignUpMutation()
+    const [login] = useLoginMutation()
     const navigate = useNavigate('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [samePassword, setSamePassword] = useState('')
     const [passMatch, setPassMatch] = useState(true)
+    const [dupeUser, setDupeUser] = useState(true)
+    const [signUpError, setSignUpError] = useState('')
 
     // const handleSetSamePasswordChange = (e) => {
     //     const value = e.target.value;
@@ -26,7 +29,9 @@ function SignUp() {
     // }
 
     useEffect(() => {
-        if (signUpStatus.isSuccess) navigate('/')
+        if (signUpStatus.isSuccess) {
+            navigate('/')
+        }
     }, [signUpStatus])
 
     const handleSubmit = async (e) => {
@@ -37,11 +42,27 @@ function SignUp() {
         const data = {}
         data.username = username
         data.password = password
-        await signUp(data)
+        try {
+            const result = await signUp(data).unwrap()
+            login({username, password})
+        } catch (error) {
+            // .unwrap()
+            // .then((payload) => console.log('fulfilled', payload))
+            // .catch((error) => console.error('rejected', error))
+            // setDupeUser(false), setSignUpError(error.data.detail), console.log(signUpError))
+            setDupeUser(false)
+            setSignUpError(error.data.detail)
+        }
     }
     return (
         <>
             <form className="centered" onSubmit={handleSubmit}>
+                {!dupeUser && (
+                    <Alert key={'warning'} variant={'warning'}>
+                        {signUpError}
+                    </Alert>
+                )}
+
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">
                         Username

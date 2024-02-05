@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import {
     useLazyGetAllEpisodesQuery,
     useLazyGetLikedEpisodesQuery,
@@ -29,7 +30,6 @@ function EpisodeList() {
                 )
         }
     }, [])
-
     if (result['isLoading']) {
         return <div>Loading...</div>
     }
@@ -123,7 +123,9 @@ function EpisodeList() {
                                                 episode_id={episode.spotify_id}
                                             />
                                         ) : (
-                                            <PantsLogin />
+                                            <NavLink to="/api/SignIn">
+                                                <PantsLogin />
+                                            </NavLink>
                                         )}
                                     </td>
                                 </tr>

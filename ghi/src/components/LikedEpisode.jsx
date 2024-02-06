@@ -48,11 +48,13 @@ function LikedEpisodes() {
     }
     // Log the structure of likedEpisodes
     const episodesArray = likedEpisodes?.liked || []
+    console.log(episodesArray);
     return (
         <div>
             <h1>Liked Episodes</h1>
             {eps.map((episode) => {
                 const lE = episodesArray.includes(episode.spotify_id)
+                console.log(lE);
                 const matchingEpisode = episodesArray.find(
                     (likedEpisode) =>
                         likedEpisode.episode_id === episode.spotify_id
@@ -105,15 +107,12 @@ function LikedEpisodes() {
                                         />
                                     </Card.Link>
                                     <Card.Link href="#">
-                                        {account ? (
-                                            <PantsHeart
-                                                lE={lE}
+                                        <PantsHeart
+                                                lE='true'
                                                 key={episode.spotify_id}
                                                 episode_id={episode.spotify_id}
                                             />
-                                        ) : (
-                                            <PantsLogin />
-                                        )}
+
                                     </Card.Link>
                                 </Card.Body>
                             </Container>

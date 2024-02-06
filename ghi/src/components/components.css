@@ -56,11 +56,13 @@ body {
 }
 
 .card {
-    background-color: rgba(248, 154, 228, 0.277);
+    border-radius: 15px;
+    background-color: rgba(212, 200, 244, 0.664);
     margin: 2%;
 }
 
 .sb {
+    border-radius: 15px;
     background-color: rgba(245, 236, 187);
     transition-duration: 0.4s;
     width: 20%;

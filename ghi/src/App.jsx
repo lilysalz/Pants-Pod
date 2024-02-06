@@ -9,6 +9,8 @@ import EpisodeList from './components/Episodelist'
 import Search from './components/Search'
 import CardEpisodelist from './components/CardEpisodelist'
 import LikedEpisodes from './components/LikedEpisode'
+import AboutUs from './components/AboutUs'
+
 // All your environment variables in vite are in this object
 // console.table(import.meta.env)
 
@@ -37,7 +39,8 @@ function App() {
                 <Route path="/api/SignUp" element={<SignUp />} />
                 <Route path="/api/Episodes" element={<EpisodeList />} />
                 <Route path="/CardedEpisodes" element={<CardEpisodelist />} />
-                <Route path="/LikedEpisodes" element={<LikedEpisodes />} />
+                <Route path="/api/LikedEpisodes" element={<LikedEpisodes />} />
+                <Route path="/api/AboutUs" element={<AboutUs />} />
             </Routes>
         </Router>
     )

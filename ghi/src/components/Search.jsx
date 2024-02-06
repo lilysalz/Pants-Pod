@@ -10,7 +10,6 @@ const Search = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(setQuery(queryInput))
-        console.log('search')
     }
     return (
         <Form className="row" onSubmit={handleSubmit}>
@@ -18,21 +17,18 @@ const Search = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control
                         type="text"
-                        placeholder="Pantalon"
+                        placeholder="Search by Title or Date (yyyy-mm-dd)"
                         value={queryInput}
                         onChange={(e) => setQueryInput(e.target.value)}
                     />
                 </Form.Group>
-                <Form.Text className="text-muted">
-                    ...Search by Title or Date (yyyy-mm-dd)
-                </Form.Text>
             </div>
             <div className="col">
-                <Button variant="primary" type="submit">
+                <Button className="sb" variant="primary" type="submit">
                     Search
                 </Button>
                 <Button
-                    variant="link"
+                    className="sb"
                     onClick={() => {
                         setQueryInput('')
                         dispatch(reset())

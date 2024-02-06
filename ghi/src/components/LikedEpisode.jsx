@@ -61,8 +61,9 @@ function LikedEpisodes() {
 
     return (
         <div>
-            <h1>Liked Episodes</h1>
+            <h1 className="funkyhead">Liked Episodes</h1>
             {eps.map((episode) => {
+                const lE = episodesArray.includes(episode.spotify_id)
                 const matchingEpisode = episodesArray.find(
                     (likedEpisode) =>
                         likedEpisode.episode_id === episode.spotify_id
@@ -92,60 +93,65 @@ function LikedEpisodes() {
                     }
 
                     return (
-                        <Card
-                            key={episode.spotify_id}
-                            style={{ width: '18rem' }}
-                        >
-                            <Container fluid>
-                                <Card.Img
-                                    className="homebar"
-                                    src="/pants_photo.jpeg"
-                                    alt="Pants picture"
-                                    style={{ width: '10rem' }}
-                                />
+                        <div className="row row-cols-md-3">
+                            <Card
+                                key={episode.spotify_id}
+                                style={{ width: '17%' }}
+                            >
+                                <Container fluid>
+                                    <Card.Img
+                                        className="homebar"
+                                        src="/pants_photo.jpeg"
+                                        alt="Pants picture"
+                                        style={{ width: '10rem' }}
+                                    />
 
-                                <Card.Body>
-                                    <Card.Title>{episode.title}</Card.Title>
-                                    <Card.Text>
-                                        Date: {episode.release_date}
-                                    </Card.Text>
-                                </Card.Body>
-                                <ListGroup className="list-group-flush">
-                                    <ListGroup.Item variant="dark">
-                                        Duration:{' '}
-                                        {getDuration(episode.duration)}
-                                    </ListGroup.Item>
-                                </ListGroup>
-                                <Card.Body>
-                                    <Card.Link href={episode.apple_url}>
-                                        <img
-                                            src="/apple_logo.png"
-                                            alt="apple_logo"
-                                            height={40}
-                                            width={40}
-                                        />
-                                    </Card.Link>
-                                    <Card.Link href={episode.spotify_url}>
-                                        <img
-                                            src="/spotify_logo.png"
-                                            alt="spotify_logo"
-                                            height={40}
-                                            width={40}
-                                        />
-                                    </Card.Link>
-                                    <Card.Link href="#">
-                                        {account ? (
-                                            <PantsHeart
-                                                lE={true}
-                                                episode_id={episode.episode_id}
+                                    <Card.Body>
+                                        <Card.Title>{episode.title}</Card.Title>
+                                        <Card.Text>
+                                            Date: {episode.release_date}
+                                        </Card.Text>
+                                    </Card.Body>
+                                    <ListGroup className="list-group-flush">
+                                        <ListGroup.Item variant="dark">
+                                            Duration:{' '}
+                                            {getDuration(episode.duration)}
+                                        </ListGroup.Item>
+                                    </ListGroup>
+                                    <Card.Body>
+                                        <Card.Link href={episode.apple_url}>
+                                            <img
+                                                src="/apple_logo.png"
+                                                alt="apple_logo"
+                                                height={40}
+                                                width={40}
                                             />
-                                        ) : (
-                                            <PantsLogin />
-                                        )}
-                                    </Card.Link>
-                                </Card.Body>
-                            </Container>
-                        </Card>
+                                        </Card.Link>
+                                        <Card.Link href={episode.spotify_url}>
+                                            <img
+                                                src="/spotify_logo.png"
+                                                alt="spotify_logo"
+                                                height={40}
+                                                width={40}
+                                            />
+                                        </Card.Link>
+                                        <Card.Link href="#">
+                                            {account ? (
+                                                <PantsHeart
+                                                    lE={lE}
+                                                    key={episode.spotify_id}
+                                                    episode_id={
+                                                        episode.spotify_id
+                                                    }
+                                                />
+                                            ) : (
+                                                <PantsLogin />
+                                            )}
+                                        </Card.Link>
+                                    </Card.Body>
+                                </Container>
+                            </Card>
+                        </div>
                     )
                 }
 

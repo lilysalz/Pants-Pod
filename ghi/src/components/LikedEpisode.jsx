@@ -58,25 +58,11 @@ function LikedEpisodes() {
                         likedEpisode.episode_id === episode.spotify_id
                 )
                 if (matchingEpisode) {
-                    console.log(
-                        'Matching Episode from episodesArray:',
-                        matchingEpisode
-                    )
+
                     // Log matching episode from eps if found
                     const matchingEpisodeInEps = eps.find(
                         (ep) => ep.spotify_id === matchingEpisode.episode_id
                     )
-                    if (matchingEpisodeInEps) {
-                        console.log(
-                            'Matching Episode from eps:',
-                            matchingEpisodeInEps
-                        )
-                    } else {
-                        console.log(
-                            'No matching episode found in eps for episode_id:',
-                            matchingEpisode.spotify_id
-                        )
-                    }
                     return (
                         <Card
                             key={episode.spotify_id}

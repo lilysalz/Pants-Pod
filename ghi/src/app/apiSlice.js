@@ -74,6 +74,7 @@ export const pantsApi = createApi({
 
 export const {
     useLazyGetAllEpisodesQuery,
+    useGetAllEpisodesQuery,
     useLikeEpisodeMutation,
     useDeleteLikeEpisodeMutation,
     useLazyGetLikedEpisodesQuery,

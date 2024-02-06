@@ -1,0 +1,45 @@
+#### Accounts
+<table>
+    <thead>
+        <tr>
+            <thead>
+                Action
+            </thead>
+            <thead>
+                Method
+            </thead>
+            <thead>
+                Path
+            </thead>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Get Token</td>
+            <td>GET</td>
+            <td>/token</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center">
+                Expects ``` { "username": "string", "password": "string" } ```
+            </td>
+        </tr>
+    </tbody>
+</table>
+| Action | Method | Path | ----------- | ----------- | ----------- | | Get Token
+| GET | /token | | Create Account | POST | /api/accounts | |
+<p style="text-align: center">Expects username/password in JSON format</p>
+||| #### Auth | Action | Method | Path | ----------- | ----------- | -----------
+| | Login | POST | /token | Expects Username/Password | Logout | DELETE | /token
+#### Liked Episodes | Action | Method | Path | ----------- | ----------- |
+----------- | | Get all liked episodes | GET | /api/episodes/liked/me | Create a
+liked episodes | POST | /api/episodes/liked/me | Delete a liked episodes |
+DELETE | /api/episodes/liked/me #### Comments | Action | Method | Path |
+----------- | ----------- | ----------- | | Get all comments for an episode |
+GET | /api/episodes/comments/{episode_id} | Create a comment | POST |
+/api/episodes/comments/{episode_id} | Delete a users comments | DELETE |
+/api/comments/me #### Submissions | Action | Method | Path | ----------- |
+----------- | ----------- | | Get all submissions | GET | /api/tell_us_anything
+| Create a submission | POST | /api/tell_us_anything | Delete a submission |
+DELETE | /api/tell_us_anything | Get all submissions for a user | GET |
+/api/tell_us_anything/me

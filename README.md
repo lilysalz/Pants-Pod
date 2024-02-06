@@ -1,26 +1,58 @@
-# PANTS the Web App
+# PANTS - The Web App
 
 **Team:**
 
--   Noah Bowman
 -   Lily Salzman
 -   Omari Thomas
+-   Noah Bowman
 
-## Functionality
+## Welcome To The Show
+[Leisha Hailey](https://www.instagram.com/leishahailey/?hl=en) and [Katherine Moennig](https://www.instagram.com/kateomoennig/?hl=en) met almost twenty years ago, playing best friends on TV. They’re still playing best friends, on TV, in the real world, and now online.
 
-Our Pants Podcast Web App boasts a powerful RESTful API designed to enhance the fan experience for lovers of the Pants podcast. Tailored for pockets – devoted fans of Pants – the API seamlessly facilitates CRUD operations, allowing users to interact with the hosts and each other effortlessly. We've integrated two third-party APIs (Spotify and Apple) into a unified platform, offering a user-friendly interface for an immersive fan engagement. The user authentication process not only ensures security but also elevates registered users' accessibility and interactivity with both information and hosts.
+[TOC]
 
-## User Scenarios
+## What It Is
+
+The Pants Podcast Web App boasts a powerful RESTful API designed to enhance the fan experience for lovers of the Pants podcast. Tailored for pockets – devoted fans of Pants – the API seamlessly facilitates CRUD operations, allowing users to interact with the hosts and each other effortlessly. We've integrated two third-party APIs (Spotify and Apple) into a unified platform, offering a user-friendly interface for an immersive fan engagement. The user authentication process not only ensures security but also elevates registered users' accessibility and interactivity with both information and hosts.
+
+## What You'll Do
 
 -   **Listening and Learning:** Any user can easily listen to or learn about each episode, creating a seamless experience for podcast enthusiasts.
 -   **Search and Sort:** Pockets can effortlessly search and sort through all episodes, making it a breeze to find and enjoy their desired content.
 -   **Personalized Experience:** By logging in, pockets can unlock the ability to save specific episodes by liking them. This personal touch empowers users to curate a customizable page dedicated to their favorite episodes.
 
-## Intended Market
+## Who It's For
 
 The Pants Web App is currently tailored for the vibrant community of Pants podcast fans, primarily comprised of queer people aged 25 to 50. As we evolve and incorporate stretch goal features, we envision expanding the app to become a versatile space for all members of the queer community and businesses to connect and interact. Inevitably, turning all people into pockets.
 
-## Stretch Goals
+## How The Trip Is Going
+
+- [x] Account Creation
+  - [ ] OAUTH with Gmail/Apple/Facebook
+  - [ ] Email Account Authentication
+  - [ ] OTP Verification
+- [x] Login/Logout
+- [x] Home Page
+- [x] Episodes List
+  - [x] Episodes List with Favorites Function
+  - [x] Favorite Episodes List
+- [ ] Episode Detail Page
+  - [ ] Episode User Notes(User Only)
+  - [ ] Comment Section
+    - [ ] Add Comments
+    - [ ] Delete Comments
+    - [ ] See All Account Comments
+- [ ] Tell Us Anything Page
+- [ ] News/Updates Page
+- [ ] Event Upload Page
+  - [ ] Patreon Type Integration for Promotion
+- [ ] Admin Page
+  - [ ] Tell Us Anything View
+  - [ ] Tell Us Anything Sort
+  - [ ] Podcast Data Management
+  - [ ] User Management
+    - [ ] Banning Users By IP
+    - [ ] Comment Moderation
 
 - **Tell Us Anything Page:** Implement a dedicated page where users can post messages for hosts to see. Administrators gain access to a list of all messages, sorted by date, ensuring seamless communication between fans and hosts.
 - **Episode Details Page:** Enhance the user experience with detailed pages for each episode, including comprehensive information and a comments section for user interaction.
@@ -44,7 +76,7 @@ The Pants Web App is currently tailored for the vibrant community of Pants podca
 
 2. Clone the forked repository onto your local computer:
 
-3. Create .env file at the top level 
+3. Create .env file at the top level
 
 ```
 CLIENT_ID=...[Get from spotify: https://developer.spotify.com/dashboard]
@@ -120,7 +152,7 @@ Visit https://gitlab.com/un-pantalon/pants/-/issues
 3. Update pip by entering: `python -m pip install --upgrade pip`
 4. Still in your terminal, enter `pip install pytest`
 5. Make sure your docker containers are up and running
-6. In your terminal, enter docker ps to get the container IDs
+6. In your terminal, enter `docker ps` to get the container IDs
 7. Get the fastapi container's ID and enter the following into your terminal: `docker exec {fastapi container ID} python -m pytest`
 
 
@@ -131,13 +163,13 @@ You should get a response that looks like this:
 platform linux -- Python 3.10.13, pytest-7.4.4, pluggy-1.3.0
 rootdir: /app
 plugins: anyio-3.7.1
-collected 1 item
+collected 3 items
 tests/test_liked.py .                                                    [100%]
 ============================== 1 passed in 0.56s ===============================
 ```
 
 -   Lily Salzman made the liked episodes unit test: api/tests/test_liked.py. The test passes if we are able to get a users liked episodes with no errors. It has a fake database of liked episodes for a user and passes when the status code is 200, the length of the response is equivalent to the amount of liked episodes in our mock database, and the liked episodes match that database exactly.
-
+ -  Noah Bowman made the test comments unit text in 'api/tests/test_comments.py'.  It creates uses the FastAPI code to get provided test comment data, based on a provided test user.
 
 ## API Documentation
 
@@ -152,38 +184,221 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 | Action | Method | Path
 | ----------- | ----------- | ----------- |
 | Get podcast data | POST | /api/episodes/admin/get_podcast_data
-| Clear episode database | DELETE | /api/episodes/admin/clear_podcast_data 
+| Clear episode database | DELETE | /api/episodes/admin/clear_podcast_data
 
 #### Accounts
-| Action | Method | Path
-| ----------- | ----------- | ----------- |
-| Get Token | GET | /token
-| Create Account | POST | /api/accounts
+<table>
+    <thead>
+        <tr>
+            <th>
+                Action
+            </th>
+            <th>
+                Method
+            </th>
+            <th>
+                Path
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Get Token</td>
+            <td>GET</td>
+            <td>/token</td>
+        </tr>
+        <tr>
+            <td>Create Account</td>
+            <td>POST</td>
+            <td>/api/accounts</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+            Expects:
+
+```json
+{
+  "username": "string",
+  "password": "string"
+}
+```
+
+</td>
+        </tr>
+    </tbody>
+</table>
 
 #### Auth
-| Action | Method | Path
-| ----------- | ----------- | ----------- |
-| Login | POST | /token
-| Logout | DELETE | /token
+<table>
+    <thead>
+        <tr>
+            <th>
+                Action
+            </th>
+            <th>
+                Method
+            </th>
+            <th>
+                Path
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Login</td>
+            <td>POST</td>
+            <td>/token</td>
+        </tr>
+        <tr>
+          <td>Logout</td>
+          <td>DELETE</td>
+          <td>/token</td>
+        </tr>
+    </tbody>
+</table>
 
 #### Liked Episodes
-| Action | Method | Path
-| ----------- | ----------- | ----------- |
-| Get all liked episodes | GET | /api/episodes/liked/me
-| Create a liked episodes | POST | /api/episodes/liked/me
-| Delete a liked episodes | DELETE | /api/episodes/liked/me
+<table>
+    <thead>
+        <tr>
+            <th>
+                Action
+            </th>
+            <th>
+                Method
+            </th>
+            <th>
+                Path
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Get liked episodes for user</td>
+            <td>GET</td>
+            <td>/api/episodes/liked/me</td>
+        </tr>
+        <tr>
+            <td>Create liked episode record</td>
+            <td>POST</td>
+            <td>/api/episodes/liked/me</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+            Expects:
+
+```json
+{
+  "episode_id": "string"
+}
+```
+
+</td>
+        </tr>
+        <tr>
+          <td>Delete a liked episodes</td>
+          <td>DELETE</td>
+          <td>/api/episodes/liked/me</td>
+        </tr>
+    </tbody>
+</table>
 
 #### Comments
-| Action | Method | Path
-| ----------- | ----------- | ----------- |
-| Get all comments for an episode | GET | /api/episodes/comments/{episode_id}
-| Create a comment | POST | /api/episodes/comments/{episode_id}
-| Delete a users comments | DELETE | /api/comments/me
+<table>
+    <thead>
+        <tr>
+            <th>
+                Action
+            </th>
+            <th>
+                Method
+            </th>
+            <th>
+                Path
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Get all episode comments</td>
+            <td>GET</td>
+            <td>/api/episodes/comments/{episode_id}</td>
+        </tr>
+        <tr>
+            <td>Create a comment</td>
+            <td>POST</td>
+            <td>/api/episodes/comments/{episode_id}</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+            Expects:
+
+```json
+{
+  "episode_id": "string",
+  "comment_text": "string",
+  "comment_datetime": "2024-02-06"
+}
+```
+
+</td>
+        </tr>
+        <tr>
+          <td>Delete a liked episodes</td>
+          <td>DELETE</td>
+          <td>/api/episodes/liked/me</td>
+        </tr>
+    </tbody>
+</table>
 
 #### Submissions
-| Action | Method | Path
-| ----------- | ----------- | ----------- |
-| Get all submissions | GET | /api/tell_us_anything
-| Create a submission | POST | /api/tell_us_anything
-| Delete a submission | DELETE | /api/tell_us_anything
-| Get all submissions for a user | GET | /api/tell_us_anything/me
+<table>
+    <thead>
+        <tr>
+            <th>
+                Action
+            </th>
+            <th>
+                Method
+            </th>
+            <th>
+                Path
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Get all submissions</td>
+            <td>GET</td>
+            <td>/api/tell_us_anything</td>
+        </tr>
+        <tr>
+            <td>Create a submission</td>
+            <td>POST</td>
+            <td>/api/tell_us_anything</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+            Expects:
+
+```json
+{
+  "submission_text": "string",
+  "submission_datetime": "2024-02-06"
+}
+```
+
+</td>
+        </tr>
+        <tr>
+          <td>Delete a submission</td>
+          <td>DELETE</td>
+          <td>/api/tell_us_anything</td>
+        </tr>
+        <tr>
+          <td>Get user's submissions</td>
+          <td>GET</td>
+          <td>/api/tell_us_anything/me</td>
+        </tr>
+    </tbody>
+</table>

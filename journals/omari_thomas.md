@@ -93,3 +93,12 @@ Task: Aded a episode page that was carded and introduced the querysplicing from 
 
 02/01/24
 DAY 13
+
+Story: Finally coming up on a rest day
+
+Task: Trouble shoot error in console logs and updated readme
+
+02/05/25
+DAY 14
+
+Task: Created liked episode page

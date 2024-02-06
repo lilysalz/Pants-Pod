@@ -23,9 +23,6 @@ const NavBar = () => {
                     <Nav.Link as={Link} to="/CardedEpisodes">
                         CardedEpisodes
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/LikedEpisodes">
-                        LikedEpisodes
-                    </Nav.Link>
                     {!account && (
                         <Nav.Link as={Link} to="/api/SignUp">
                             Sign Up
@@ -39,6 +36,14 @@ const NavBar = () => {
                     {account && (
                         <Nav.Link as={Link} to={logout} onClick={logout}>
                             Log Out {account.account.username}
+                        </Nav.Link>
+                        // <button className="logout-button" onClick={logout}>
+                        //     Log out {account.account.username}
+                        // </button>
+                    )}
+                    {account && (
+                        <Nav.Link as={Link} to="/LikedEpisodes">
+                            My Liked_Episodes
                         </Nav.Link>
                         // <button className="logout-button" onClick={logout}>
                         //     Log out {account.account.username}

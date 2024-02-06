@@ -16,18 +16,6 @@ function SignUp() {
     const [dupeUser, setDupeUser] = useState(true)
     const [signUpError, setSignUpError] = useState('')
 
-    // const handleSetSamePasswordChange = (e) => {
-    //     const value = e.target.value;
-    //     setSamePassword(value);
-
-    //     if (password == samePassword) {
-    //         setPassMatch(true)
-    //     } else {
-    //         setPassMatch(false)
-    //     }
-    //     console.log(password, samePassword);
-    // }
-
     useEffect(() => {
         if (signUpStatus.isSuccess) {
             navigate('/')
@@ -64,13 +52,13 @@ function SignUp() {
                 )}
 
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">
+                    <label htmlFor="exampleInputUser" className="form-label">
                         Username
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="exampleInputEmail1"
+                        id="exampleInputUser"
                         aria-describedby="emailHelp"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}

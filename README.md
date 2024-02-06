@@ -1,135 +1,189 @@
-## Module3 Project Gamma
+# PANTS the Web App
 
-Team:
+**Team:**
 
 -   Noah Bowman
 -   Lily Salzman
 -   Omari Thomas
 
-#MVP
+## Functionality
 
-1. Functionality
+Our Pants Podcast Web App boasts a powerful RESTful API designed to enhance the fan experience for lovers of the Pants podcast. Tailored for pockets – devoted fans of Pants – the API seamlessly facilitates CRUD operations, allowing users to interact with the hosts and each other effortlessly. We've integrated two third-party APIs (Spotify and Apple) into a unified platform, offering a user-friendly interface for an immersive fan engagement. The user authentication process not only ensures security but also elevates registered users' accessibility and interactivity with both information and hosts.
 
--   Our RESTful API facilitates CRUD operations for managing podcast data. It seamlessly integrates two third-party APIs
-    (Spotify and Apple) on a unified platform, providing a user-friendly interface for enhanced fan engagement. Furthermore,
-    the user authentication process grants registered users increased accessibility and interactivity with both the information
-    and the hosts.
+## User Scenarios
 
-2. User Scenarios
+-   **Listening and Learning:** Any user can easily listen to or learn about each episode, creating a seamless experience for podcast enthusiasts.
+-   **Search and Sort:** Pockets can effortlessly search and sort through all episodes, making it a breeze to find and enjoy their desired content.
+-   **Personalized Experience:** By logging in, pockets can unlock the ability to save specific episodes by liking them. This personal touch empowers users to curate a customizable page dedicated to their favorite episodes.
 
--   Once a user is logged in, they gain the ability to express appreciation for specific episodes by liking them. The liked
-    episodes can subsequently be accessed on a dedicated page, where the user's saved episodes are stored.
+## Intended Market
 
-3. Intended Market
+The Pants Web App is currently tailored for the vibrant community of Pants podcast fans, primarily comprised of queer people aged 25 to 50. As we evolve and incorporate stretch goal features, we envision expanding the app to become a versatile space for all members of the queer community and businesses to connect and interact. Inevitably, turning all people into pockets.
 
--   (Clearly define your user persona and target demographic)
+## Stretch Goals
 
-4. Stretch Goals
+- **Tell Us Anything Page:** Implement a dedicated page where users can post messages for hosts to see. Administrators gain access to a list of all messages, sorted by date, ensuring seamless communication between fans and hosts.
+- **Episode Details Page:** Enhance the user experience with detailed pages for each episode, including comprehensive information and a comments section for user interaction.
+- **Additional User Features:** Explore providing users with additional features, such as the ability to take episode notes and more on the screen, further enriching the user experience.
+- **Administrative Empowerment:** Strengthen administrative functions by enabling the banning of specific users for enhanced community management.
+- **Patreon-Inspired Feature:** Introduce a Patreon-inspired feature, allowing users to pay for the privilege of uploading queer events to the app's map.
+- **Event Discovery:** Enable users to input their zip code with a customizable range to receive a curated list of nearby events, fostering community engagement.
+- **Comprehensive App Experience:** Transform the concept into a fully-fledged app, complete with a Discord channel for seamless communication.
+- **Content Expansion:** Empower administrators to publish articles, enhancing the platform's content diversity.
+- **Authentication Upgrade:** Consider upgrading the authentication process with Google OAuth for a streamlined and secure login experience.
 
--   Enhance administrative functions by enabling the banning of specific users. Introduce a Patreon-inspired feature, allowing
-    users to pay for the privilege of uploading events to the map. Users, in turn, can input their zip code with a customizable
-    range to receive a curated list of nearby events. The goal is to transform this concept into an app, complete with a Discord
-    channel. Additionally, empower administrators to publish articles. Consider upgrading the authentication process with Google
-    OAuth and explore providing users with additional features, such as the ability to take episode notes and more on screen.
 
-5. Onboarding
-   **Make sure you have Docker, Git, and Node.js**
+## Onboarding
 
--1. Fork the specified repository
+**Prerequisites:**
+- Docker
+- Git
+- Node.js
 
--2. Clone the forked repository onto your local computer:
+1. Fork the specified repository
 
--3. Update your docker compose file to include the services and volumes needed:
+2. Clone the forked repository onto your local computer:
 
-```
-volumes:
-    postgres-data:
-        external: true
-    pg-admin:
-        external: true
-services:
-    postgres:
-        ...
-    fastapi:
-        environment:
-            ...
-    ghi:
-        ...
-    pg-admin:
-        image: dpage/pgadmin4
-        volumes:
-            ...
-        ...
-```
-
--4. Update your requirements.txt file:
+3. Create .env file at the top level 
 
 ```
-fastapi[all]<=0.92.0
-uvicorn[standard]==0.17.6
-pytest
-psycopg[binary,pool]==3.1.2
-httpx==0.26.0
-aiofiles>=0.8.0,<0.9.0
-jwtdown-fastapi>=0.5.0
-```
-
--4.5 Create .env file
+CLIENT_ID=...[Get from spotify: https://developer.spotify.com/dashboard]
+CLIENT_SECRET=...[Get from spotify: https://developer.spotify.com/dashboard]
+SIGNING_KEY=...[Make your own]
+PG_DEFAULT_EMAIL=...[Make your own]
+PG_DEFAULT_PASS=...[Make your own]
+VITE_API_HOST=http://localhost:8000
 
 ```
-CLIENT_ID=...
-CLIENT_SECRET=...
-SIGNING_KEY=...
-PG_DEFAULT_EMAIL=...
-PG_DEFAULT_PASS=...
-VITE_API_HOST=...
-
+4. Create another .env file in ghi that contains this:
+```
+VITE_API_HOST=http://localhost:8000
 ```
 
--5. Build and run the project using Docker with these commands:
+5. Build and run the project using Docker with the following commands in your terminal:
 
 ```
 docker volume create postgres-data
 docker volume create pg-admin
+docker-compose build
 docker-compose up
 ```
 
-6. Tech Stack
+6. After running these commands, make sure all of your Docker containers are running. You should have one for postgres, one for fastapi, one for ghi, and one for pg-admin.
 
--   React, FastAPI, PostgreSQL, Docker
+7. View the project in the browser: http://localhost:5173/
 
-7. Journaling
+## Tech Stack
 
--   Each team member maintains a journal in the journals directory
+- React
+- FastAPI
+- PostgreSQL
+- Docker
 
-8. Documentation
+This project utilizes FastAPI, a modern web framework for building RESTful APIs in Python. Comprising Pydantic, Starlette, and Unicorn, FastAPI offers flexibility in choosing databases. PostgreSQL is the selected database, requiring the creation of migrations tables with a specific format. The FastAPI portion of this project is structured with dedicated directories for migrations, queries, routers, and tests. The migrations directory holds the format for setting up our database, while the queries directory houses repositories for the necessary code to gather data. The routers directory attaches these codes to specific paths.
 
--   view documents directory
+#### Pydantic:
 
-9. Issue Tracking
+- Utilizes type hints to validate, serialize, and deserialize data.
+- Automatically generates OpenAPI documentation for APIs built with it.
+- A data validation library from Python, written in the Rust programming language.
 
-10. Testing
+#### Starlette:
 
--   Our unit tests test the endpoints for getting comments, liked episodes and submissions to the tell us anything API.
+- A lightweight ASGI framework/toolkit supporting async functionality in Python.
+  - **ASGI (Asynchronous Server Gateway Interface):**
+    - A calling convention for web servers to forward requests to asynchronous-capable Python programming language frameworks and applications.
 
-6. After running these commands, make sure all of your Docker containers are running
+#### Uvicorn:
 
--   View the project in the browser: http://localhost:5173/
+- A minimal low-level server/application web server for asynchronous frameworks that follows the ASGI specification.
+
+## Journaling
+
+Each team member maintains a journal in the journals directory
+
+## Documentation
+
+View the docs folder for comprehensive project documentation.
+
+## Issue Tracking
+
+Visit https://gitlab.com/un-pantalon/pants/-/issues
+
+## Testing
+
+-   Our unit tests test the endpoints for getting comments, liked episodes, and submissions to the tell us anything API. In order to run the tests follow the steps below:
+1. Create a new virtual environment by typing `python -m venv .venv` into your terminal.
+2. Activate the virtual environment by adding one of the options below:
+    - windows: `.\.venv\Scripts\Activate.ps1`
+    - macOS: `source ./.venv/bin/activate`
+3. Update pip by entering: `python -m pip install --upgrade pip`
+4. Still in your terminal, enter `pip install pytest`
+5. Make sure your docker containers are up and running
+6. In your terminal, enter docker ps to get the container IDs
+7. Get the fastapi container's ID and enter the following into your terminal: `docker exec {fastapi container ID} python -m pytest`
+
+
+You should get a response that looks like this:
+
+```
+============================= test session starts ==============================
+platform linux -- Python 3.10.13, pytest-7.4.4, pluggy-1.3.0
+rootdir: /app
+plugins: anyio-3.7.1
+collected 1 item
+tests/test_liked.py .                                                    [100%]
+============================== 1 passed in 0.56s ===============================
+```
+
+-   Lily Salzman made the liked episodes unit test: api/tests/test_liked.py. The test passes if we are able to get a users liked episodes with no errors. It has a fake database of liked episodes for a user and passes when the status code is 200, the length of the response is equivalent to the amount of liked episodes in our mock database, and the liked episodes match that database exactly.
+
 
 ## API Documentation
 
-HIGH LEVEL OVERVIEW
+Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 
-This project uses FastAPI. FastAPI is a modern web framwork for building RESTful APIs in Python. It is predominantly comprised of Pydantic, Starlette and Unicorn. FastAPI allows the versatility of choosing your database. The database used here is postgres, hence, the need for creating migrations table specifically formatted. The FastApi portion of this project has specific directories for migrations, queries, routers, and tests. As mentioned, the migrations directory holds the format we chose to set up or database. The queries directory houses the repositories for the necessary code to gather data while the routers directory attach those codes to a specific path.
+#### Episodes
+| Action | Method | Path
+| ----------- | ----------- | ----------- |
+| Get all episodes | GET | /api/episodes
 
-Pydantic:
--Uses type hinst to validate, serialize and deserialize data. it also automatically generates OpenAPI docuentation for APIs built with it.
--Is a data validation library from Python, written in Rust programming language.
+#### Admin
+| Action | Method | Path
+| ----------- | ----------- | ----------- |
+| Get podcast data | POST | /api/episodes/admin/get_podcast_data
+| Clear episode database | DELETE | /api/episodes/admin/clear_podcast_data 
 
-Starlette:
--Is a lightweight ASGI framework/toolkit used to support async functionality in Python.
-(--)Asynchronous Server Gateway Interface (ASGI):
-(---)is a calling convention for web servers to forward request to asynchroous-capable Python programming language frameworks and applications.
+#### Accounts
+| Action | Method | Path
+| ----------- | ----------- | ----------- |
+| Get Token | GET | /token
+| Create Account | POST | /api/accounts
 
-Uvicorn:
--Is a minimal low-lever server/applicatin web server for asynck frameworks that follows ASGI specification.
+#### Auth
+| Action | Method | Path
+| ----------- | ----------- | ----------- |
+| Login | POST | /token
+| Logout | DELETE | /token
+
+#### Liked Episodes
+| Action | Method | Path
+| ----------- | ----------- | ----------- |
+| Get all liked episodes | GET | /api/episodes/liked/me
+| Create a liked episodes | POST | /api/episodes/liked/me
+| Delete a liked episodes | DELETE | /api/episodes/liked/me
+
+#### Comments
+| Action | Method | Path
+| ----------- | ----------- | ----------- |
+| Get all comments for an episode | GET | /api/episodes/comments/{episode_id}
+| Create a comment | POST | /api/episodes/comments/{episode_id}
+| Delete a users comments | DELETE | /api/comments/me
+
+#### Submissions
+| Action | Method | Path
+| ----------- | ----------- | ----------- |
+| Get all submissions | GET | /api/tell_us_anything
+| Create a submission | POST | /api/tell_us_anything
+| Delete a submission | DELETE | /api/tell_us_anything
+| Get all submissions for a user | GET | /api/tell_us_anything/me

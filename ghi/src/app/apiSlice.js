@@ -16,6 +16,7 @@ export const pantsApi = createApi({
                 body: info,
                 credentials: 'include',
             }),
+            invalidatesTags: ['Favorites'],
         }),
         deleteLikeEpisode: builder.mutation({
             query: (id) => ({
@@ -23,12 +24,14 @@ export const pantsApi = createApi({
                 method: 'DELETE',
                 credentials: 'include',
             }),
+            invalidatesTags: ['Favorites'],
         }),
         getLikedEpisodes: builder.query({
             query: () => ({
                 url: '/api/episodes/liked/me',
                 credentials: 'include',
             }),
+            providesTags: ['Favorites'],
         }),
         getToken: builder.query({
             query: () => ({

@@ -27,6 +27,9 @@ function LikedEpisodes() {
     if (error) {
         return <div>Error: {error.message}</div>
     }
+    if (error) {
+        return <div>Error: {error.message}</div>
+    }
     function getDuration(duration) {
         const ss = Math.floor((duration / 1000) % 60)
         const mm = Math.floor((duration / 1000 / 60) % 60)

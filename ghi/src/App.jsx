@@ -32,7 +32,7 @@ function App() {
     const domain = /https:\/\/[^/]+/
     const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, '')
     return (
-        <BrowserRouter >
+        <BrowserRouter basename={basename}>
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />

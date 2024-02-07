@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Container from 'react-bootstrap/Container'
@@ -40,35 +39,25 @@ function LikedEpisodes() {
         const newDuration = `${hh} hrs ${mm} min ${ss} sec`
         return newDuration
     }
-    function getDate(date) {
-        date = new Date(date)
-        let text = date.toDateString()
-        return text
-    }
+
     function getRevEps(eps) {
         let revEps = [...eps].reverse()
         return revEps
     }
-    function reverseEps() {
-        setEps((prevEps) => (prevEps === eps ? getRevEps(eps) : eps))
-    }
-    // Log the structure of likedEpisodes
+
     const episodesArray = likedEpisodes?.liked || []
-    console.log(episodesArray)
     return (
         <>
             <Container fluid>
-                <h1 className='funkyhead'>Liked Episodes</h1>
+                <h1 className="funkyhead">Liked Episodes</h1>
                 <Row>
                     {eps.map((episode) => {
                         const lE = episodesArray.includes(episode.spotify_id)
-                        console.log(lE)
                         const matchingEpisode = episodesArray.find(
                             (likedEpisode) =>
                                 likedEpisode.episode_id === episode.spotify_id
                         )
                         if (matchingEpisode) {
-                            // Log matching episode from eps if found
                             const matchingEpisodeInEps = eps.find(
                                 (ep) =>
                                     ep.spotify_id === matchingEpisode.episode_id
@@ -77,7 +66,10 @@ function LikedEpisodes() {
                                 <Col md={3}>
                                     <Card
                                         key={episode.spotify_id}
-                                        style={{ width: '19rem', height: '29rem' }}
+                                        style={{
+                                            width: '19rem',
+                                            height: '29rem',
+                                        }}
                                     >
                                         <Card.Img
                                             variant="top"

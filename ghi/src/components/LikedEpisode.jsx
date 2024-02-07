@@ -4,11 +4,7 @@ import Container from 'react-bootstrap/Container'
 import { Row, Col } from 'react-bootstrap'
 import { useGetLikedEpisodesQuery } from '../app/apiSlice'
 import PantsHeart from './PantsHeart'
-import {
-    useLazyGetAllEpisodesQuery,
-    useLazyGetLikedEpisodesQuery,
-    useGetTokenQuery,
-} from '../app/apiSlice'
+import { useLazyGetAllEpisodesQuery } from '../app/apiSlice'
 import { useState, useEffect } from 'react'
 import Footer from './Footer'
 
@@ -20,7 +16,7 @@ function LikedEpisodes() {
         episodes()
             .unwrap()
             .then((data) => setEps(getRevEps(data)))
-    })
+    }, [episodes])
     if (isLoading) {
         return <div>Loading...</div>
     }

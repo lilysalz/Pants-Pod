@@ -17,7 +17,12 @@ function SignIn() {
         if (loginStatus.isError) {
             setErrorMessage(loginStatus.error.data.detail)
         }
-    })
+    }, [
+        loginStatus.isSuccess,
+        loginStatus.isError,
+        loginStatus.error.data.detail,
+        navigate,
+    ])
     const handleSubmit = (e) => {
         e.preventDefault()
         login({

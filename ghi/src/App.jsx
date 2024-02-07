@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './components/Home'
 import NavBar from './components/Navbar'
-import SignIn from './components/Signin'
-import SignUp from './components/Signup'
-import EpisodeList from './components/Episodelist'
+import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
+import EpisodesList from './components/EpisodesList'
 import Search from './components/Search'
 import CardEpisodelist from './components/CardEpisodelist'
 import LikedEpisodes from './components/LikedEpisode'
@@ -37,7 +37,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/api/SignIn" element={<SignIn />} />
                 <Route path="/api/SignUp" element={<SignUp />} />
-                <Route path="/api/Episodes" element={<EpisodeList />} />
+                <Route path="/api/Episodes" element={<EpisodesList />} />
                 <Route path="/CardedEpisodes" element={<CardEpisodelist />} />
                 <Route path="/api/LikedEpisodes" element={<LikedEpisodes />} />
                 <Route path="/api/AboutUs" element={<AboutUs />} />

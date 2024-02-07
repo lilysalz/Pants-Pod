@@ -1,10 +1,11 @@
 import Card from 'react-bootstrap/Card'
+import Footer from './Footer'
 
 function AboutUs() {
     return (
         <>
             <div className="row row-cols-md-2">
-                <div className='col'>
+                <div className="col">
                     <img src="/KL.jpeg" alt="Kate and Leisha" />
                 </div>
                 <div className="col">
@@ -66,10 +67,16 @@ function AboutUs() {
                         </Card.Body>
                     </Card>
                 </div>
-                <div className='col'>
-                    <img src="/KL2.jpeg" alt="Kate and Leisha" />
+                <div className="col">
+                    <img
+                        src="/KL2.jpeg"
+                        height={430}
+                        width={430}
+                        alt="Kate and Leisha"
+                    />
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

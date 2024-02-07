@@ -7,8 +7,9 @@ import {
 } from '../app/apiSlice'
 import PantsHeart from './PantsHeart'
 import PantsLogin from '../imgs/pants.min.svg?react'
+import Footer from './Footer'
 
-function EpisodeList() {
+function EpisodesList() {
     const { data: account } = useGetTokenQuery()
     const [episodes, result] = useLazyGetAllEpisodesQuery()
     const [eps, setEps] = useState([])
@@ -134,8 +135,9 @@ function EpisodeList() {
                     </tbody>
                 </table>
             </div>
+            <Footer />
         </>
     )
 }
 
-export default EpisodeList
+export default EpisodesList

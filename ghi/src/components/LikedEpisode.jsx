@@ -54,111 +54,91 @@ function LikedEpisodes() {
     }
     // Log the structure of likedEpisodes
     const episodesArray = likedEpisodes?.liked || []
-<<<<<<< HEAD
-
+    console.log(episodesArray)
     return (
         <>
-            <div>
-                <h1 className="funkyhead">Liked Episodes</h1>
-                {eps.map((episode) => {
-                    const lE = episodesArray.includes(episode.spotify_id)
-=======
-    console.log(episodesArray);
-    return (
-        <Container fluid>
-            <h1>Liked Episodes</h1>
-            <Row>
-                {eps.map((episode) => {
-                    const lE = episodesArray.includes(episode.spotify_id)
-                    console.log(lE)
->>>>>>> main
-                    const matchingEpisode = episodesArray.find(
-                        (likedEpisode) =>
-                            likedEpisode.episode_id === episode.spotify_id
-                    )
-                    if (matchingEpisode) {
-                        // Log matching episode from eps if found
-                        const matchingEpisodeInEps = eps.find(
-                            (ep) => ep.spotify_id === matchingEpisode.episode_id
+            <Container fluid>
+                <h1 className='funkyhead'>Liked Episodes</h1>
+                <Row>
+                    {eps.map((episode) => {
+                        const lE = episodesArray.includes(episode.spotify_id)
+                        console.log(lE)
+                        const matchingEpisode = episodesArray.find(
+                            (likedEpisode) =>
+                                likedEpisode.episode_id === episode.spotify_id
                         )
-                        return (
-<<<<<<< HEAD
-                            <Card
-                                key={episode.spotify_id}
-                                style={{ width: '18rem' }}
-                            >
-                                <Container fluid>
-                                    <Card.Img
-=======
-                            <Col md={4}>
-                                <Card
-                                    key={episode.spotify_id}
-                                    style={{ width: '18rem' }}
-                                >
-                                    <Card.Img
-                                        variant="top"
->>>>>>> main
-                                        className="homebar"
-                                        src="/pants_photo.jpeg"
-                                        alt="Pants picture"
-                                        style={{ width: '10rem' }}
-                                    />
-                                    <Card.Body>
-                                        <Card.Title>{episode.title}</Card.Title>
-                                        <Card.Text>
-                                            Date: {episode.release_date}
-                                        </Card.Text>
-                                    </Card.Body>
-                                    <ListGroup className="list-group-flush">
-                                        <ListGroup.Item variant="dark">
-                                            Duration:{' '}
-                                            {getDuration(episode.duration)}
-                                        </ListGroup.Item>
-                                    </ListGroup>
-                                    <Card.Body>
-                                        <Card.Link href={episode.apple_url}>
-                                            <img
-                                                src="/apple_logo.png"
-                                                alt="apple_logo"
-                                                height={40}
-                                                width={40}
-                                            />
-                                        </Card.Link>
-                                        <Card.Link href={episode.spotify_url}>
-                                            <img
-                                                src="/spotify_logo.png"
-                                                alt="spotify_logo"
-                                                height={40}
-                                                width={40}
-                                            />
-                                        </Card.Link>
-                                        <Card.Link href="#">
-                                            <PantsHeart
-                                                lE="true"
-                                                key={episode.spotify_id}
-                                                episode_id={episode.spotify_id}
-                                            />
-                                        </Card.Link>
-                                    </Card.Body>
-<<<<<<< HEAD
-                                </Container>
-                            </Card>
-=======
-                                </Card>
-                            </Col>
->>>>>>> main
-                        )
-                    }
-                    return null // Render nothing if no matching episode_id
-                })}
-<<<<<<< HEAD
-            </div>
+                        if (matchingEpisode) {
+                            // Log matching episode from eps if found
+                            const matchingEpisodeInEps = eps.find(
+                                (ep) =>
+                                    ep.spotify_id === matchingEpisode.episode_id
+                            )
+                            return (
+                                <Col md={3}>
+                                    <Card
+                                        key={episode.spotify_id}
+                                        style={{ width: '19rem', height: '29rem' }}
+                                    >
+                                        <Card.Img
+                                            variant="top"
+                                            className="homebar"
+                                            src="/pants_photo.jpeg"
+                                            alt="Pants picture"
+                                            style={{ width: '10rem' }}
+                                        />
+                                        <Card.Body>
+                                            <Card.Title>
+                                                {episode.title}
+                                            </Card.Title>
+                                            <Card.Text>
+                                                Date: {episode.release_date}
+                                            </Card.Text>
+                                        </Card.Body>
+                                        <ListGroup className="list-group-flush">
+                                            <ListGroup.Item variant="dark">
+                                                Duration:{' '}
+                                                {getDuration(episode.duration)}
+                                            </ListGroup.Item>
+                                        </ListGroup>
+                                        <Card.Body>
+                                            <Card.Link href={episode.apple_url}>
+                                                <img
+                                                    src="/apple_logo.png"
+                                                    alt="apple_logo"
+                                                    height={40}
+                                                    width={40}
+                                                />
+                                            </Card.Link>
+                                            <Card.Link
+                                                href={episode.spotify_url}
+                                            >
+                                                <img
+                                                    src="/spotify_logo.png"
+                                                    alt="spotify_logo"
+                                                    height={40}
+                                                    width={40}
+                                                />
+                                            </Card.Link>
+                                            <Card.Link href="#">
+                                                <PantsHeart
+                                                    lE="true"
+                                                    key={episode.spotify_id}
+                                                    episode_id={
+                                                        episode.spotify_id
+                                                    }
+                                                />
+                                            </Card.Link>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            )
+                        }
+                        return null // Render nothing if no matching episode_id
+                    })}
+                </Row>
+            </Container>
             <Footer />
         </>
-=======
-            </Row>
-        </Container>
->>>>>>> main
     )
 }
 export default LikedEpisodes

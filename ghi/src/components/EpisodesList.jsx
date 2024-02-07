@@ -30,7 +30,7 @@ function EpisodesList() {
                     setLikedEpisodes(data.liked.map((a) => a.episode_id))
                 )
         }
-    }, [liked])
+    }, [liked, account])
     if (result['isLoading']) {
         return <div>Loading...</div>
     }

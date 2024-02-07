@@ -6,7 +6,6 @@ import { useLoginMutation } from '../app/apiSlice'
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-
 function SignIn() {
     const navigate = useNavigate('')
     const [username, setUsername] = useState('')
@@ -18,7 +17,7 @@ function SignIn() {
         if (loginStatus.isError) {
             setErrorMessage(loginStatus.error.data.detail)
         }
-    }, [loginStatus])
+    })
     const handleSubmit = (e) => {
         e.preventDefault()
         login({
@@ -59,7 +58,7 @@ function SignIn() {
                     Login
                 </Button>{' '}
                 <br></br> <br></br> <br></br> <br></br>
-                <p>Don't have an account?</p>
+                <p>Don&apos;t have an account?</p>
                 <Link to="/api/signup">
                     <Button className="sb-long">Sign Up</Button>{' '}
                 </Link>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import SVG3 from '../imgs/trans_svg.svg?react'
 import './Pants.css'
 import {
@@ -7,8 +7,8 @@ import {
 } from '../app/apiSlice'
 
 function PantsHeart({ lE, episode_id }) {
-    const [like, likeStatus] = useLikeEpisodeMutation()
-    const [unLike, unLikeStatus] = useDeleteLikeEpisodeMutation()
+    const [like] = useLikeEpisodeMutation()
+    const [unLike] = useDeleteLikeEpisodeMutation()
     const [heart, setIsHeart] = useState(lE)
     const handleClick = () => {
         if (!heart) {

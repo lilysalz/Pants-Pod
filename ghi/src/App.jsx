@@ -1,12 +1,11 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom'
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './components/Home'
 import NavBar from './components/Navbar'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
+import SignIn from './components/Signin'
+import SignUp from './components/Signup'
 import EpisodesList from './components/EpisodesList'
-import Search from './components/Search'
 import CardEpisodelist from './components/CardEpisodelist'
 import LikedEpisodes from './components/LikedEpisode'
 import AboutUs from './components/AboutUs'
@@ -31,9 +30,9 @@ import AboutUs from './components/AboutUs'
 //  */
 function App() {
     const domain = /https:\/\/[^/]+/
-    const basename = process.env.PUBLIC_URL.replace(domain, '');
+    const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, '')
     return (
-        <Router basename={basename}>
+        <BrowserRouter >
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -44,7 +43,7 @@ function App() {
                 <Route path="/api/LikedEpisodes" element={<LikedEpisodes />} />
                 <Route path="/api/AboutUs" element={<AboutUs />} />
             </Routes>
-        </Router>
+        </BrowserRouter>
     )
 }
 // /**

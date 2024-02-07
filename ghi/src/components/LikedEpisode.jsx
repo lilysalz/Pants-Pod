@@ -14,15 +14,13 @@ import Footer from './Footer'
 
 function LikedEpisodes() {
     const { data: likedEpisodes, error, isLoading } = useGetLikedEpisodesQuery()
-    const { data: account } = useGetTokenQuery()
-    const [episodes, result] = useLazyGetAllEpisodesQuery()
+    const [episodes] = useLazyGetAllEpisodesQuery()
     const [eps, setEps] = useState([])
-    const [liked] = useLazyGetLikedEpisodesQuery()
     useEffect(() => {
         episodes()
             .unwrap()
             .then((data) => setEps(getRevEps(data)))
-    }, [])
+    })
     if (isLoading) {
         return <div>Loading...</div>
     }
@@ -52,18 +50,13 @@ function LikedEpisodes() {
                 <h1 className="funkyhead">Liked Episodes</h1>
                 <Row>
                     {eps.map((episode) => {
-                        const lE = episodesArray.includes(episode.spotify_id)
                         const matchingEpisode = episodesArray.find(
                             (likedEpisode) =>
                                 likedEpisode.episode_id === episode.spotify_id
                         )
                         if (matchingEpisode) {
-                            const matchingEpisodeInEps = eps.find(
-                                (ep) =>
-                                    ep.spotify_id === matchingEpisode.episode_id
-                            )
                             return (
-                                <Col md={3}>
+                                <Col md={3} key={episode.spotify_id}>
                                     <Card
                                         key={episode.spotify_id}
                                         style={{

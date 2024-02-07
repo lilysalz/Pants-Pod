@@ -7,7 +7,7 @@ const Home = () => {
     const [episodes, result] = useLazyGetAllEpisodesQuery()
     useEffect(() => {
         episodes()
-    }, [])
+    })
     if (!result['isSuccess']) {
         return <div>Loading...</div>
     }
@@ -47,7 +47,7 @@ const Home = () => {
                 <Card.Body>
                     <Card.Title>
                         <h1 className="default-text-bold">
-                            Catch up on this week's episode!
+                            Catch up on this week&apos;s episode!
                         </h1>
                     </Card.Title>
                     <div className="default-text-bold">

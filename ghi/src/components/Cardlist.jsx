@@ -23,7 +23,7 @@ function CardList() {
         episodes()
             .unwrap()
             .then((data) => setEps(getRevEps(data)))
-    }, [])
+    })
 
     React.useEffect(() => {
         liked()
@@ -31,7 +31,7 @@ function CardList() {
             .then((data) =>
                 setLikedEpisodes(data.liked.map((a) => a.episode_id))
             )
-    }, [])
+    })
 
     if (result.isLoading) {
         return <div>Loading...</div>
@@ -49,21 +49,9 @@ function CardList() {
         return newDuration
     }
 
-    function getDate(date) {
-        date = new Date(date)
-        let text = date.toDateString()
-        return text
-    }
-
     function getRevEps(episodes) {
         let revEps = [...episodes].reverse()
         return revEps
-    }
-
-    function reverseEps() {
-        setEps((prevEps) =>
-            prevEps === episodes ? getRevEps(episodes) : episodes
-        )
     }
 
     const filteredData = () => {

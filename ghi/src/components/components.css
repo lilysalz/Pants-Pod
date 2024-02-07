@@ -103,7 +103,7 @@ body {
 }
 
 .homebar {
-    width: 33%;
+    border-radius: 15px;
 }
 
 .homep {

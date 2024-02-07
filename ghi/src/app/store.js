@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { pantsApi } from './apiSlice'
-import favoriteSlice from './favoriteSlice';
+import querySlice from './querySlice';
 
 export const store = configureStore({
     reducer: {
-        favoriteSlice: favoriteSlice,
+        query: querySlice,
         [pantsApi.reducerPath]: pantsApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

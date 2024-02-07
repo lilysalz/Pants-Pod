@@ -11,12 +11,17 @@ stages:
 tests:
     variables:
         DATABASE_URL: postgresql://example_user:secret@postgres/example_db
+    variables:
+        DATABASE_URL: postgresql://example_user:secret@postgres/example_db
     image: python:3-bullseye
     stage: test
     script:
         - pip install flake8
         - flake8 api
         # Run unit tests
+        - cd api
+        - pip install -r requirements.txt
+        - python -m pytest
         - cd api
         - pip install -r requirements.txt
         - python -m pytest

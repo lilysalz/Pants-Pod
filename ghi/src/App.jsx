@@ -30,8 +30,10 @@ import AboutUs from './components/AboutUs'
 //  * @returns {React.ReactNode}
 //  */
 function App() {
+    const domain = /https:\/\/[^/]+/
+    const basename = process.env.PUBLIC_URL.replace(domain, '');
     return (
-        <Router>
+        <Router basename={basename}>
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />

@@ -11,6 +11,8 @@ import {
     useGetTokenQuery,
 } from '../app/apiSlice'
 import { useState, useEffect } from 'react'
+import Footer from './Footer'
+
 function LikedEpisodes() {
     const { data: likedEpisodes, error, isLoading } = useGetLikedEpisodesQuery()
     const { data: account } = useGetTokenQuery()
@@ -52,6 +54,15 @@ function LikedEpisodes() {
     }
     // Log the structure of likedEpisodes
     const episodesArray = likedEpisodes?.liked || []
+<<<<<<< HEAD
+
+    return (
+        <>
+            <div>
+                <h1 className="funkyhead">Liked Episodes</h1>
+                {eps.map((episode) => {
+                    const lE = episodesArray.includes(episode.spotify_id)
+=======
     console.log(episodesArray);
     return (
         <Container fluid>
@@ -60,6 +71,7 @@ function LikedEpisodes() {
                 {eps.map((episode) => {
                     const lE = episodesArray.includes(episode.spotify_id)
                     console.log(lE)
+>>>>>>> main
                     const matchingEpisode = episodesArray.find(
                         (likedEpisode) =>
                             likedEpisode.episode_id === episode.spotify_id
@@ -70,6 +82,14 @@ function LikedEpisodes() {
                             (ep) => ep.spotify_id === matchingEpisode.episode_id
                         )
                         return (
+<<<<<<< HEAD
+                            <Card
+                                key={episode.spotify_id}
+                                style={{ width: '18rem' }}
+                            >
+                                <Container fluid>
+                                    <Card.Img
+=======
                             <Col md={4}>
                                 <Card
                                     key={episode.spotify_id}
@@ -77,6 +97,7 @@ function LikedEpisodes() {
                                 >
                                     <Card.Img
                                         variant="top"
+>>>>>>> main
                                         className="homebar"
                                         src="/pants_photo.jpeg"
                                         alt="Pants picture"
@@ -119,14 +140,25 @@ function LikedEpisodes() {
                                             />
                                         </Card.Link>
                                     </Card.Body>
+<<<<<<< HEAD
+                                </Container>
+                            </Card>
+=======
                                 </Card>
                             </Col>
+>>>>>>> main
                         )
                     }
                     return null // Render nothing if no matching episode_id
                 })}
+<<<<<<< HEAD
+            </div>
+            <Footer />
+        </>
+=======
             </Row>
         </Container>
+>>>>>>> main
     )
 }
 export default LikedEpisodes

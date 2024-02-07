@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { useEffect } from 'react'
 import { useLazyGetAllEpisodesQuery } from '../app/apiSlice'
+import Footer from './Footer'
 
 const Home = () => {
     const [episodes, result] = useLazyGetAllEpisodesQuery()
@@ -24,11 +25,7 @@ const Home = () => {
                     src="/pantspod.svg"
                     alt="Pants design"
                 />
-                <img
-                    className="homebar"
-                    src="/pants_photo.jpeg"
-                    alt="Pants picture"
-                />
+                <img className="homebar" src="/KL3.jpeg" alt="Pants picture" />
                 <img
                     className="homebar"
                     src="/pantspod.svg"
@@ -61,7 +58,6 @@ const Home = () => {
                     <div>{result.data[result.data.length - 1].description}</div>
                     <a href={result.data[result.data.length - 1].spotify_url}>
                         <img
-                            className="homeimgs"
                             src="/spotify_logo.png"
                             alt="spotify_logo"
                             height={100}
@@ -70,7 +66,6 @@ const Home = () => {
                     </a>
                     <a href={result.data[result.data.length - 1].apple_url}>
                         <img
-                            className="homeimgs"
                             src="/apple_logo.png"
                             alt="apple_logo"
                             height={100}
@@ -79,6 +74,7 @@ const Home = () => {
                     </a>
                 </Card.Body>
             </Card>
+            <Footer />
         </>
     )
 }

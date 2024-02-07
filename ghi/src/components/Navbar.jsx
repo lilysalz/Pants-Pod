@@ -21,10 +21,7 @@ const NavBar = () => {
                         Episodes
                     </Nav.Link>
                     {account && (
-                        <Nav.Link
-                            as={Link}
-                            to="/api/LikedEpisodes"
-                        >
+                        <Nav.Link as={Link} to="/api/LikedEpisodes">
                             Liked Episodes
                         </Nav.Link>
                     )}

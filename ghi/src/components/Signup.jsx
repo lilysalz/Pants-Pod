@@ -32,12 +32,8 @@ function SignUp() {
         data.password = password
         try {
             const result = await signUp(data).unwrap()
-            login({username, password})
+            login({ username, password })
         } catch (error) {
-            // .unwrap()
-            // .then((payload) => console.log('fulfilled', payload))
-            // .catch((error) => console.error('rejected', error))
-            // setDupeUser(false), setSignUpError(error.data.detail), console.log(signUpError))
             setDupeUser(false)
             setSignUpError(error.data.detail)
         }

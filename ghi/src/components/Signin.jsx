@@ -14,7 +14,7 @@ function SignIn() {
     const [login, loginStatus] = useLoginMutation()
     useEffect(() => {
         if (loginStatus.isSuccess) navigate('/')
-        if (loginStatus.isError) {
+        else if (loginStatus.isError) {
             setErrorMessage(loginStatus.error.data.detail)
         }
     }, [

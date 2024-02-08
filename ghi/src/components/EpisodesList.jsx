@@ -20,7 +20,7 @@ function EpisodesList() {
         episodes()
             .unwrap()
             .then((data) => setEps(getRevEps(data)))
-    }, [])
+    }, [episodes])
 
     useEffect(() => {
         if (account) {
@@ -30,7 +30,7 @@ function EpisodesList() {
                     setLikedEpisodes(data.liked.map((a) => a.episode_id))
                 )
         }
-    }, [])
+    }, [liked, account])
     if (result['isLoading']) {
         return <div>Loading...</div>
     }

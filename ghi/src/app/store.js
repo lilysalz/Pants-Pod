@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { pantsApi } from './apiSlice'
-import querySlice from './querySlice';
+import querySlice from './querySlice'
 
 export const store = configureStore({
     reducer: {
@@ -9,4 +9,4 @@ export const store = configureStore({
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(pantsApi.middleware),
-});
+})

@@ -41,8 +41,8 @@ services:
         environment:
             NODE_ENV: developement
             HOST: "0.0.0.0"
-            PUBLIC_URL: http://localhost:5173
             VITE_API_HOST: ${VITE_API_HOST}
+
     pg-admin:
         image: dpage/pgadmin4
         volumes:

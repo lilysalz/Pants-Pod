@@ -13,7 +13,7 @@ transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, paddi
 body {
   margin: 0;
   font-family: 'Playfair Display';
-    src: url('PlayfairDisplayRegular-ywLOY.ttf');
+    src: url('../public/PlayfairDisplayRegular-ywLOY.ttf');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

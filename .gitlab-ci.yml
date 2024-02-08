@@ -13,6 +13,8 @@ tests:
         DATABASE_URL: postgresql://example_user:secret@postgres/example_db
     variables:
         DATABASE_URL: postgresql://example_user:secret@postgres/example_db
+    variables:
+        DATABASE_URL: postgresql://example_user:secret@postgres/example_db
     image: python:3-bullseye
     stage: test
     script:
@@ -32,6 +34,7 @@ build-api-image:
   needs:
     - tests
   variables:
+
 
     GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/api
   before_script:
@@ -55,7 +58,8 @@ build-front-end-job:
     # You need to substitute in your real values for
     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
     # Don't forget to also replace PROJECT NAME in the npm run build line as well
-    VITE_PUBLIC_URL: https://un-pantalon.gitlab.io/pants
+    # VITE_PUBLIC_URL: https://un-pantalon.gitlab.io/pants
+    VITE_PUBLIC_URL: https://pants-un-pantalon-3cd5e1310b934bdd7edb8327858c1710b57d26662d0c1.gitlab.io/
     VITE_API_HOST: https://oct-2023-11et-api.mod3projects.com
   script:
     - cd ghi
@@ -69,6 +73,20 @@ build-front-end-job:
     paths:
       - ghi/dist/
 
+# Deploy the React/JavaScript front-end to GitLab pages
+pages:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  dependencies:
+    - build-front-end-job
+  needs:
+    - build-front-end-job
+  script:
+    - mv ghi/dist/ public
+  artifacts:
+    paths:
+      - public
 # Deploy the React/JavaScript front-end to GitLab pages
 pages:
   stage: deploy

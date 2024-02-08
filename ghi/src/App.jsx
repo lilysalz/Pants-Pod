@@ -29,7 +29,7 @@ import AboutUs from './components/AboutUs'
 //  * @returns {React.ReactNode}
 //  */
 function App() {
-    const domain = /https:\/\/[^/]+/
+    const domain = /https:?\/\/[^/]+/
     const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, '')
     return (
         <BrowserRouter basename={basename}>

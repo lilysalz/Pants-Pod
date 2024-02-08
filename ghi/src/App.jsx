@@ -29,8 +29,7 @@ import AboutUs from './components/AboutUs'
 //  * @returns {React.ReactNode}
 //  */
 function App() {
-    const domain = /https:?\/\/[^/]+/
-    const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, '')
+    const basename = import.meta.env.VITE_PUBLIC_URL
     return (
         <BrowserRouter basename={basename}>
             <NavBar />

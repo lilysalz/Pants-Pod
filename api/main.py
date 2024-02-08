@@ -23,7 +23,10 @@ app.include_router(tell_us_anything.router, tags=["Submission"])
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.environ.get("CORS_HOST")],
+    allow_origins=[
+        os.environ.get("CORS_HOST"),
+        "https://pants-un-pantalon-3cd5e1310b934bdd7edb8327858c1710b57d26662d0c1.gitlab.io/",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

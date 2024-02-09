@@ -30,8 +30,7 @@ class TellRepo:
                     get_result = result.fetchone()
                     tell_us_anything["id"] = str(get_result[0])
                     return tell_us_anything
-        except Exception as e:
-            print(e)
+        except Exception:
             return {"message": "Couldn't create submission."}
 
     def get_my_tell_us_anything(self, user_id: str):
@@ -101,6 +100,5 @@ class TellRepo:
                     )
                     result = db.fetchone()[0]
                     return result is not None
-        except Exception as e:
-            print(e)
+        except Exception:
             return False

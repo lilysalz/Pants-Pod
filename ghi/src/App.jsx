@@ -15,11 +15,12 @@ import AboutUs from './components/AboutUs'
 
 // When using environment variables, you should do a check to see if
 // they are defined or not and throw an appropriate error message
-// const API_HOST = import.meta.env.VITE_API_HOST
+const API_HOST = import.meta.env.VITE_API_HOST
 
-// if (!API_HOST) {
-//     throw new Error('VITE_API_HOST is not defined')
-// }
+if (!API_HOST) {
+    throw new Error('VITE_API_HOST is not defined')
+}
+
 
 // /**
 //  * This is an example of using JSDOC to define types for your component
@@ -29,7 +30,8 @@ import AboutUs from './components/AboutUs'
 //  * @returns {React.ReactNode}
 //  */
 function App() {
-    const basename = import.meta.env.VITE_PUBLIC_URL
+    const domain = /http(s?):\/\/[^/]+/;
+    const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "")
     return (
         <BrowserRouter basename={basename}>
             <NavBar />

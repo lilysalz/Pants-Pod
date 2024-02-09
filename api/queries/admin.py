@@ -102,7 +102,6 @@ class ThirdPartyRepository:
                                             """
                                         )
                             except Exception as e:
-                                print(e)
                                 return {
                                     "message": "Couldn't create foreign key relationship."
                                 }
@@ -110,12 +109,10 @@ class ThirdPartyRepository:
                                 "message": "Spotify API call successful. Please verify data integrity."
                             }
                     except Exception as e:
-                        print(e)
                         return {
                             "message": "Couldn't write spotify data to DB."
                         }
             except Exception as e:
-                print(e)
                 return {
                     "message": "Something went wrong with Spotify API call"
                 }
@@ -154,10 +151,8 @@ class ThirdPartyRepository:
                             "message": "Apple API call successful.  Please verify data integrity."
                         }
             except Exception as e:
-                print(e)
                 return {"message": "Couldn't write apple data to DB"}
         except Exception as e:
-            print(e)
             return {"message": "Something went wrong with Apple api call"}
 
     def clear_podcast_database(self):
@@ -173,5 +168,4 @@ class ThirdPartyRepository:
                     )
                     return True
         except Exception as e:
-            print(e)
             return {"message": "Couldn't clear database"}

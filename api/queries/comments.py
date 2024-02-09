@@ -31,7 +31,6 @@ class CommentsRepo:
                     comments["id"] = str(get_result[0])
                     return comments
         except Exception as e:
-            print(e)
             return {"message": "Couldn't create comment."}
 
     def get_comments(self, user_id: str):
@@ -83,7 +82,6 @@ class CommentsRepo:
                         results.append(record)
                     return results
         except Exception as e:
-            print(e)
             return {"message": "Couldn't get a list of comments"}
 
     def delete_comments(self, episode_id: str, user_id: int, id: str) -> bool:
@@ -103,5 +101,4 @@ class CommentsRepo:
                     result = db.fetchone()[0]
                     return result is not None
         except Exception as e:
-            print(e)
             return False

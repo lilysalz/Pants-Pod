@@ -28,13 +28,11 @@ class AccountsQueries:
                     account["hashed_password"] = str(get_result[2])
                     return AccountOutWithHashedPassword(**account)
         except Exception as e:
-            print(e)
             return {"message": "Couldn't get user info."}
 
     def create(self, info: AccountIn, hashed_password: str):
         if self.get(username=info.username) is not None:
             raise DuplicateAccountError
-        print(info)
         account = info.dict()
         account["hashed_password"] = hashed_password
         try:
@@ -55,5 +53,4 @@ class AccountsQueries:
                     account["id"] = str(get_result[0])
                     return account
         except Exception as e:
-            print(e)
             return {"message": "Couldn't create user."}

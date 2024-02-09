@@ -76,34 +76,48 @@ The Pants Web App is currently tailored for the vibrant community of Pants podca
 
 2. Clone the forked repository onto your local computer:
 
-3. Create .env file at the top level
+3. Create .env file at the top level with these values:
 
 ```
 CLIENT_ID=...[Get from spotify: https://developer.spotify.com/dashboard]
 CLIENT_SECRET=...[Get from spotify: https://developer.spotify.com/dashboard]
 SIGNING_KEY=...[Make your own]
-PG_DEFAULT_EMAIL=...[Make your own]
-PG_DEFAULT_PASS=...[Make your own]
 VITE_API_HOST=http://localhost:8000
 
 ```
-4. Create another .env file in ghi that contains this:
+4. Create another .env file in /ghi that contains these values:
 ```
 VITE_API_HOST=http://localhost:8000
+VITE_PUBLIC_URL=
 ```
 
 5. Build and run the project using Docker with the following commands in your terminal:
 
 ```
 docker volume create postgres-data
-docker volume create pg-admin
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 ```
 
-6. After running these commands, make sure all of your Docker containers are running. You should have one for postgres, one for fastapi, one for ghi, and one for pg-admin.
+6. After running these commands, make sure all of your Docker containers are running. You should have one for postgres, one for fastapi, and one for ghi.
 
-7. View the project in the browser: http://localhost:5173/
+7. Go to the [FastAPI](http://localhost:8000/docs#/Admin/get_podcast_data_api_episodes_admin_get_podcast_data_post') backend.
+   1. Click the 'Try it out' button.
+   2. Click the 'Execute' button.
+   - You should get a response:
+
+```json
+[
+  {
+    "message": "Spotify API call successful. Please verify data integrity."
+  },
+  {
+    "message": "Apple API call successful.  Please verify data integrity."
+  }
+]
+```
+
+8. View the project in the browser: http://localhost:5173/
 
 ## Tech Stack
 

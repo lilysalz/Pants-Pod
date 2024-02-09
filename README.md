@@ -27,33 +27,6 @@ The Pants Web App is currently tailored for the vibrant community of Pants podca
 
 ## How The Trip Is Going
 
-- [x] Account Creation
-  - [ ] OAUTH with Gmail/Apple/Facebook
-  - [ ] Email Account Authentication
-  - [ ] OTP Verification
-- [x] Login/Logout
-- [x] Home Page
-- [x] Episodes List
-  - [x] Episodes List with Favorites Function
-  - [x] Favorite Episodes List
-- [ ] Episode Detail Page
-  - [ ] Episode User Notes(User Only)
-  - [ ] Comment Section
-    - [ ] Add Comments
-    - [ ] Delete Comments
-    - [ ] See All Account Comments
-- [ ] Tell Us Anything Page
-- [ ] News/Updates Page
-- [ ] Event Upload Page
-  - [ ] Patreon Type Integration for Promotion
-- [ ] Admin Page
-  - [ ] Tell Us Anything View
-  - [ ] Tell Us Anything Sort
-  - [ ] Podcast Data Management
-  - [ ] User Management
-    - [ ] Banning Users By IP
-    - [ ] Comment Moderation
-
 - **Tell Us Anything Page:** Implement a dedicated page where users can post messages for hosts to see. Administrators gain access to a list of all messages, sorted by date, ensuring seamless communication between fans and hosts.
 - **Episode Details Page:** Enhance the user experience with detailed pages for each episode, including comprehensive information and a comments section for user interaction.
 - **Additional User Features:** Explore providing users with additional features, such as the ability to take episode notes and more on the screen, further enriching the user experience.
@@ -76,34 +49,48 @@ The Pants Web App is currently tailored for the vibrant community of Pants podca
 
 2. Clone the forked repository onto your local computer:
 
-3. Create .env file at the top level
+3. Create .env file at the top level with these values:
 
 ```
 CLIENT_ID=...[Get from spotify: https://developer.spotify.com/dashboard]
 CLIENT_SECRET=...[Get from spotify: https://developer.spotify.com/dashboard]
 SIGNING_KEY=...[Make your own]
-PG_DEFAULT_EMAIL=...[Make your own]
-PG_DEFAULT_PASS=...[Make your own]
 VITE_API_HOST=http://localhost:8000
 
 ```
-4. Create another .env file in ghi that contains this:
+4. Create another .env file in /ghi that contains these values:
 ```
 VITE_API_HOST=http://localhost:8000
+VITE_PUBLIC_URL=
 ```
 
 5. Build and run the project using Docker with the following commands in your terminal:
 
 ```
 docker volume create postgres-data
-docker volume create pg-admin
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 ```
 
-6. After running these commands, make sure all of your Docker containers are running. You should have one for postgres, one for fastapi, one for ghi, and one for pg-admin.
+6. After running these commands, make sure all of your Docker containers are running. You should have one for postgres, one for fastapi, and one for ghi.
 
-7. View the project in the browser: http://localhost:5173/
+7. Go to the [FastAPI](http://localhost:8000/docs#/Admin/get_podcast_data_api_episodes_admin_get_podcast_data_post') backend.
+   1. Click the 'Try it out' button.
+   2. Click the 'Execute' button.
+   - You should get a response:
+
+```json
+[
+  {
+    "message": "Spotify API call successful. Please verify data integrity."
+  },
+  {
+    "message": "Apple API call successful.  Please verify data integrity."
+  }
+]
+```
+
+8. View the project in the browser: http://localhost:5173/
 
 ## Tech Stack
 

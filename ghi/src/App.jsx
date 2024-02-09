@@ -1,12 +1,11 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './components/Home'
 import NavBar from './components/Navbar'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
+import SignIn from './components/Signin'
+import SignUp from './components/Signup'
 import EpisodesList from './components/EpisodesList'
-import Search from './components/Search'
 import CardEpisodelist from './components/CardEpisodelist'
 import LikedEpisodes from './components/LikedEpisode'
 import AboutUs from './components/AboutUs'
@@ -16,11 +15,12 @@ import AboutUs from './components/AboutUs'
 
 // When using environment variables, you should do a check to see if
 // they are defined or not and throw an appropriate error message
-// const API_HOST = import.meta.env.VITE_API_HOST
+const API_HOST = import.meta.env.VITE_API_HOST
 
-// if (!API_HOST) {
-//     throw new Error('VITE_API_HOST is not defined')
-// }
+if (!API_HOST) {
+    throw new Error('VITE_API_HOST is not defined')
+}
+
 
 // /**
 //  * This is an example of using JSDOC to define types for your component
@@ -30,8 +30,10 @@ import AboutUs from './components/AboutUs'
 //  * @returns {React.ReactNode}
 //  */
 function App() {
+    const domain = /http(s?):\/\/[^/]+/;
+    const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "")
     return (
-        <Router>
+        <BrowserRouter basename={basename}>
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -42,7 +44,7 @@ function App() {
                 <Route path="/api/LikedEpisodes" element={<LikedEpisodes />} />
                 <Route path="/api/AboutUs" element={<AboutUs />} />
             </Routes>
-        </Router>
+        </BrowserRouter>
     )
 }
 // /**

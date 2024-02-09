@@ -20,7 +20,7 @@ function SignUp() {
         if (signUpStatus.isSuccess) {
             navigate('/')
         }
-    }, [signUpStatus])
+    })
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -31,7 +31,7 @@ function SignUp() {
         data.username = username
         data.password = password
         try {
-            const result = await signUp(data).unwrap()
+            await signUp(data).unwrap()
             login({ username, password })
         } catch (error) {
             setDupeUser(false)

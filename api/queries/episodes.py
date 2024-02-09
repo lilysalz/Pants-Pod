@@ -28,6 +28,5 @@ class EpisodesRepository:
                         )
                         result.append(record)
                     return result
-        except Exception as e:
-            print(e)
+        except Exception:
             return {"message": "Couldn't get a list of episodes"}

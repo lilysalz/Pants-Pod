@@ -27,33 +27,6 @@ The Pants Web App is currently tailored for the vibrant community of Pants podca
 
 ## How The Trip Is Going
 
-- [x] Account Creation
-  - [ ] OAUTH with Gmail/Apple/Facebook
-  - [ ] Email Account Authentication
-  - [ ] OTP Verification
-- [x] Login/Logout
-- [x] Home Page
-- [x] Episodes List
-  - [x] Episodes List with Favorites Function
-  - [x] Favorite Episodes List
-- [ ] Episode Detail Page
-  - [ ] Episode User Notes(User Only)
-  - [ ] Comment Section
-    - [ ] Add Comments
-    - [ ] Delete Comments
-    - [ ] See All Account Comments
-- [ ] Tell Us Anything Page
-- [ ] News/Updates Page
-- [ ] Event Upload Page
-  - [ ] Patreon Type Integration for Promotion
-- [ ] Admin Page
-  - [ ] Tell Us Anything View
-  - [ ] Tell Us Anything Sort
-  - [ ] Podcast Data Management
-  - [ ] User Management
-    - [ ] Banning Users By IP
-    - [ ] Comment Moderation
-
 - **Tell Us Anything Page:** Implement a dedicated page where users can post messages for hosts to see. Administrators gain access to a list of all messages, sorted by date, ensuring seamless communication between fans and hosts.
 - **Episode Details Page:** Enhance the user experience with detailed pages for each episode, including comprehensive information and a comments section for user interaction.
 - **Additional User Features:** Explore providing users with additional features, such as the ability to take episode notes and more on the screen, further enriching the user experience.

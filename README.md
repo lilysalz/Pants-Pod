@@ -7,6 +7,7 @@
 -   Noah Bowman
 
 ## Welcome To The Show
+
 [Leisha Hailey](https://www.instagram.com/leishahailey/?hl=en) and [Katherine Moennig](https://www.instagram.com/kateomoennig/?hl=en) met almost twenty years ago, playing best friends on TV. They’re still playing best friends, on TV, in the real world, and now online.
 
 [TOC]
@@ -27,23 +28,23 @@ The Pants Web App is currently tailored for the vibrant community of Pants podca
 
 ## How The Trip Is Going
 
-- **Tell Us Anything Page:** Implement a dedicated page where users can post messages for hosts to see. Administrators gain access to a list of all messages, sorted by date, ensuring seamless communication between fans and hosts.
-- **Episode Details Page:** Enhance the user experience with detailed pages for each episode, including comprehensive information and a comments section for user interaction.
-- **Additional User Features:** Explore providing users with additional features, such as the ability to take episode notes and more on the screen, further enriching the user experience.
-- **Administrative Empowerment:** Strengthen administrative functions by enabling the banning of specific users for enhanced community management.
-- **Patreon-Inspired Feature:** Introduce a Patreon-inspired feature, allowing users to pay for the privilege of uploading queer events to the app's map.
-- **Event Discovery:** Enable users to input their zip code with a customizable range to receive a curated list of nearby events, fostering community engagement.
-- **Comprehensive App Experience:** Transform the concept into a fully-fledged app, complete with a Discord channel for seamless communication.
-- **Content Expansion:** Empower administrators to publish articles, enhancing the platform's content diversity.
-- **Authentication Upgrade:** Consider upgrading the authentication process with Google OAuth for a streamlined and secure login experience.
-
+-   **Tell Us Anything Page:** Implement a dedicated page where users can post messages for hosts to see. Administrators gain access to a list of all messages, sorted by date, ensuring seamless communication between fans and hosts.
+-   **Episode Details Page:** Enhance the user experience with detailed pages for each episode, including comprehensive information and a comments section for user interaction.
+-   **Additional User Features:** Explore providing users with additional features, such as the ability to take episode notes and more on the screen, further enriching the user experience.
+-   **Administrative Empowerment:** Strengthen administrative functions by enabling the banning of specific users for enhanced community management.
+-   **Patreon-Inspired Feature:** Introduce a Patreon-inspired feature, allowing users to pay for the privilege of uploading queer events to the app's map.
+-   **Event Discovery:** Enable users to input their zip code with a customizable range to receive a curated list of nearby events, fostering community engagement.
+-   **Comprehensive App Experience:** Transform the concept into a fully-fledged app, complete with a Discord channel for seamless communication.
+-   **Content Expansion:** Empower administrators to publish articles, enhancing the platform's content diversity.
+-   **Authentication Upgrade:** Consider upgrading the authentication process with Google OAuth for a streamlined and secure login experience.
 
 ## Onboarding
 
 **Prerequisites:**
-- Docker
-- Git
-- Node.js
+
+-   Docker
+-   Git
+-   Node.js
 
 1. Fork the specified repository
 
@@ -58,7 +59,9 @@ SIGNING_KEY=...[Make your own]
 VITE_API_HOST=http://localhost:8000
 
 ```
+
 4. Create another .env file in /ghi that contains these values:
+
 ```
 VITE_API_HOST=http://localhost:8000
 VITE_PUBLIC_URL=
@@ -75,18 +78,18 @@ docker compose up
 6. After running these commands, make sure all of your Docker containers are running. You should have one for postgres, one for fastapi, and one for ghi.
 
 7. Go to the [FastAPI](http://localhost:8000/docs#/Admin/get_podcast_data_api_episodes_admin_get_podcast_data_post') backend.
-   1. Click the 'Try it out' button.
-   2. Click the 'Execute' button.
-   - You should get a response:
+    1. Click the 'Try it out' button.
+    2. Click the 'Execute' button.
+    - You should get a response:
 
 ```json
 [
-  {
-    "message": "Spotify API call successful. Please verify data integrity."
-  },
-  {
-    "message": "Apple API call successful.  Please verify data integrity."
-  }
+    {
+        "message": "Spotify API call successful. Please verify data integrity."
+    },
+    {
+        "message": "Apple API call successful.  Please verify data integrity."
+    }
 ]
 ```
 
@@ -94,28 +97,28 @@ docker compose up
 
 ## Tech Stack
 
-- React
-- FastAPI
-- PostgreSQL
-- Docker
+-   React
+-   FastAPI
+-   PostgreSQL
+-   Docker
 
 This project utilizes FastAPI, a modern web framework for building RESTful APIs in Python. Comprising Pydantic, Starlette, and Unicorn, FastAPI offers flexibility in choosing databases. PostgreSQL is the selected database, requiring the creation of migrations tables with a specific format. The FastAPI portion of this project is structured with dedicated directories for migrations, queries, routers, and tests. The migrations directory holds the format for setting up our database, while the queries directory houses repositories for the necessary code to gather data. The routers directory attaches these codes to specific paths.
 
 #### Pydantic:
 
-- Utilizes type hints to validate, serialize, and deserialize data.
-- Automatically generates OpenAPI documentation for APIs built with it.
-- A data validation library from Python, written in the Rust programming language.
+-   Utilizes type hints to validate, serialize, and deserialize data.
+-   Automatically generates OpenAPI documentation for APIs built with it.
+-   A data validation library from Python, written in the Rust programming language.
 
 #### Starlette:
 
-- A lightweight ASGI framework/toolkit supporting async functionality in Python.
-  - **ASGI (Asynchronous Server Gateway Interface):**
-    - A calling convention for web servers to forward requests to asynchronous-capable Python programming language frameworks and applications.
+-   A lightweight ASGI framework/toolkit supporting async functionality in Python.
+    -   **ASGI (Asynchronous Server Gateway Interface):**
+        -   A calling convention for web servers to forward requests to asynchronous-capable Python programming language frameworks and applications.
 
 #### Uvicorn:
 
-- A minimal low-level server/application web server for asynchronous frameworks that follows the ASGI specification.
+-   A minimal low-level server/application web server for asynchronous frameworks that follows the ASGI specification.
 
 ## Journaling
 
@@ -132,6 +135,7 @@ Visit https://gitlab.com/un-pantalon/pants/-/issues
 ## Testing
 
 -   Our unit tests test the endpoints for getting comments, liked episodes, and submissions to the tell us anything API. In order to run the tests follow the steps below:
+
 1. Create a new virtual environment by typing `python -m venv .venv` into your terminal.
 2. Activate the virtual environment by adding one of the options below:
     - windows: `.\.venv\Scripts\Activate.ps1`
@@ -141,7 +145,6 @@ Visit https://gitlab.com/un-pantalon/pants/-/issues
 5. Make sure your docker containers are up and running
 6. In your terminal, enter `docker ps` to get the container IDs
 7. Get the fastapi container's ID and enter the following into your terminal: `docker exec {fastapi container ID} python -m pytest`
-
 
 You should get a response that looks like this:
 
@@ -156,24 +159,28 @@ tests/test_liked.py .                                                    [100%]
 ```
 
 -   Lily Salzman made the liked episodes unit test: api/tests/test_liked.py. The test passes if we are able to get a users liked episodes with no errors. It has a fake database of liked episodes for a user and passes when the status code is 200, the length of the response is equivalent to the amount of liked episodes in our mock database, and the liked episodes match that database exactly.
- -  Noah Bowman made the test comments unit text in 'api/tests/test_comments.py'.  It creates uses the FastAPI code to get provided test comment data, based on a provided test user.
+-   Noah Bowman made the test comments unit text in 'api/tests/test_comments.py'. It creates uses the FastAPI code to get provided test comment data, based on a provided test user.
+-   Omari Thomas made the test submissions unit text in 'api/tests/test_submissions.py'. It creates uses the FastAPI code to get provided test submission data, based on a provided test user.
 
 ## API Documentation
 
 Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 
 #### Episodes
-| Action | Method | Path
-| ----------- | ----------- | ----------- |
-| Get all episodes | GET | /api/episodes
+
+| Action           | Method | Path          |
+| ---------------- | ------ | ------------- |
+| Get all episodes | GET    | /api/episodes |
 
 #### Admin
-| Action | Method | Path
-| ----------- | ----------- | ----------- |
-| Get podcast data | POST | /api/episodes/admin/get_podcast_data
-| Clear episode database | DELETE | /api/episodes/admin/clear_podcast_data
+
+| Action                 | Method | Path                                   |
+| ---------------------- | ------ | -------------------------------------- |
+| Get podcast data       | POST   | /api/episodes/admin/get_podcast_data   |
+| Clear episode database | DELETE | /api/episodes/admin/clear_podcast_data |
 
 #### Accounts
+
 <table>
     <thead>
         <tr>
@@ -205,8 +212,8 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 
 ```json
 {
-  "username": "string",
-  "password": "string"
+    "username": "string",
+    "password": "string"
 }
 ```
 
@@ -216,6 +223,7 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 </table>
 
 #### Auth
+
 <table>
     <thead>
         <tr>
@@ -245,6 +253,7 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 </table>
 
 #### Liked Episodes
+
 <table>
     <thead>
         <tr>
@@ -276,7 +285,7 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 
 ```json
 {
-  "episode_id": "string"
+    "episode_id": "string"
 }
 ```
 
@@ -291,6 +300,7 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 </table>
 
 #### Comments
+
 <table>
     <thead>
         <tr>
@@ -322,9 +332,9 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 
 ```json
 {
-  "episode_id": "string",
-  "comment_text": "string",
-  "comment_datetime": "2024-02-06"
+    "episode_id": "string",
+    "comment_text": "string",
+    "comment_datetime": "2024-02-06"
 }
 ```
 
@@ -339,6 +349,7 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 </table>
 
 #### Submissions
+
 <table>
     <thead>
         <tr>
@@ -370,8 +381,8 @@ Visit swagger: http://localhost:8000/docs#/ to access the following endpoints.
 
 ```json
 {
-  "submission_text": "string",
-  "submission_datetime": "2024-02-06"
+    "submission_text": "string",
+    "submission_datetime": "2024-02-06"
 }
 ```
 

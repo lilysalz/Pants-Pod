@@ -63,9 +63,8 @@ function LikedEpisodes() {
                                     ep.spotify_id === matchingEpisode.episode_id
                             )
                             return (
-                                <Col md={3}>
+                                <Col md={3} key={episode.spotify_id}>
                                     <Card
-                                        key={episode.spotify_id}
                                         style={{
                                             width: '19rem',
                                             height: '29rem',

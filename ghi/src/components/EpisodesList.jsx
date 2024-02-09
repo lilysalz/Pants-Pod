@@ -7,7 +7,6 @@ import {
 } from '../app/apiSlice'
 import PantsHeart from './PantsHeart'
 import PantsLogin from '../imgs/pants.min.svg?react'
-import Footer from './Footer'
 
 function EpisodesList() {
     const { data: account } = useGetTokenQuery()
@@ -135,7 +134,6 @@ function EpisodesList() {
                     </tbody>
                 </table>
             </div>
-            <Footer />
         </>
     )
 }

@@ -64,6 +64,7 @@ tr:nth-child(even) {
 
 body {
     background-color: rgba(245, 236, 187, 0.617);
+    padding-bottom: 5%;
 }
 
 .card {

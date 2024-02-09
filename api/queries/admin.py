@@ -101,18 +101,18 @@ class ThirdPartyRepository:
                                                 ADD CONSTRAINT fk_comments FOREIGN KEY (episode_id) REFERENCES episodes(spotify_id);
                                             """
                                         )
-                            except Exception as e:
+                            except Exception:
                                 return {
                                     "message": "Couldn't create foreign key relationship."
                                 }
                             return {
                                 "message": "Spotify API call successful. Please verify data integrity."
                             }
-                    except Exception as e:
+                    except Exception:
                         return {
                             "message": "Couldn't write spotify data to DB."
                         }
-            except Exception as e:
+            except Exception:
                 return {
                     "message": "Something went wrong with Spotify API call"
                 }
@@ -150,9 +150,9 @@ class ThirdPartyRepository:
                         return {
                             "message": "Apple API call successful.  Please verify data integrity."
                         }
-            except Exception as e:
+            except Exception:
                 return {"message": "Couldn't write apple data to DB"}
-        except Exception as e:
+        except Exception:
             return {"message": "Something went wrong with Apple api call"}
 
     def clear_podcast_database(self):
@@ -167,5 +167,5 @@ class ThirdPartyRepository:
                         """
                     )
                     return True
-        except Exception as e:
+        except Exception:
             return {"message": "Couldn't clear database"}

@@ -32,7 +32,7 @@ class LikedRepository:
                         return liked
                     else:
                         return {"message": "Like record already exists."}
-        except Exception as e:
+        except Exception:
             return {"message": "Couldn't like episode."}
 
     def get_liked_episodes(self, user_id: str):
@@ -73,5 +73,5 @@ class LikedRepository:
                     )
                     result = db.fetchone()[0]
                     return result is not None
-        except Exception as e:
+        except Exception:
             return False

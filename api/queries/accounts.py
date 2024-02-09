@@ -27,7 +27,7 @@ class AccountsQueries:
                     account["username"] = str(get_result[1])
                     account["hashed_password"] = str(get_result[2])
                     return AccountOutWithHashedPassword(**account)
-        except Exception as e:
+        except Exception:
             return {"message": "Couldn't get user info."}
 
     def create(self, info: AccountIn, hashed_password: str):
@@ -52,5 +52,5 @@ class AccountsQueries:
                     get_result = result.fetchone()
                     account["id"] = str(get_result[0])
                     return account
-        except Exception as e:
+        except Exception:
             return {"message": "Couldn't create user."}

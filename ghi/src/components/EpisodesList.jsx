@@ -98,7 +98,7 @@ function EpisodesList() {
                                     <td>
                                         <a href={episode.spotify_url}>
                                             <img
-                                                src="/spotify_logo.png"
+                                                src="https://i.ibb.co/jbZVdqr/spotify-logo.png"
                                                 alt="spotify_logo"
                                                 height={40}
                                                 width={40}
@@ -108,7 +108,7 @@ function EpisodesList() {
                                     <td>
                                         <a href={episode.apple_url}>
                                             <img
-                                                src="/apple_logo.png"
+                                                src="https://i.ibb.co/h7dyTCf/apple-logo.png"
                                                 alt="apple_logo"
                                                 height={40}
                                                 width={40}

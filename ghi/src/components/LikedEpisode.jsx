@@ -61,7 +61,7 @@ function LikedEpisodes() {
                                         <Card.Img
                                             variant="top"
                                             className="homebar"
-                                            src="/pants_photo.jpeg"
+                                            src="https://i.ibb.co/LZJ5sBV/pants-photo.jpg"
                                             alt="Pants picture"
                                             style={{ width: '10rem' }}
                                         />
@@ -82,7 +82,7 @@ function LikedEpisodes() {
                                         <Card.Body>
                                             <Card.Link href={episode.apple_url}>
                                                 <img
-                                                    src="/apple_logo.png"
+                                                    src="https://i.ibb.co/h7dyTCf/apple-logo.png"
                                                     alt="apple_logo"
                                                     height={40}
                                                     width={40}
@@ -92,7 +92,7 @@ function LikedEpisodes() {
                                                 href={episode.spotify_url}
                                             >
                                                 <img
-                                                    src="/spotify_logo.png"
+                                                    src="https://i.ibb.co/jbZVdqr/spotify-logo.png"
                                                     alt="spotify_logo"
                                                     height={40}
                                                     width={40}

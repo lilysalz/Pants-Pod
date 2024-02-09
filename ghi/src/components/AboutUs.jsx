@@ -5,7 +5,10 @@ function AboutUs() {
         <>
             <div className="row row-cols-md-2">
                 <div className="col">
-                    <img src="/KL.jpeg" alt="Kate and Leisha" />
+                    <img
+                        src="https://i.ibb.co/JmZkH1q/KL.jpg"
+                        alt="Kate and Leisha"
+                    />
                 </div>
                 <div className="col">
                     <Card className="background-color">
@@ -68,7 +71,7 @@ function AboutUs() {
                 </div>
                 <div className="col">
                     <img
-                        src="/KL2.jpeg"
+                        src="https://i.ibb.co/yfGdgCJ/KL2.jpg"
                         height={430}
                         width={430}
                         alt="Kate and Leisha"

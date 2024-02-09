@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card'
 import { useEffect } from 'react'
 import { useLazyGetAllEpisodesQuery } from '../app/apiSlice'
+import PantsPod from '../imgs/pantspod.svg?react'
 
 const Home = () => {
     const [episodes, result] = useLazyGetAllEpisodesQuery()
@@ -17,17 +18,13 @@ const Home = () => {
     return (
         <>
             <div>
+                <PantsPod className="homebar" />
                 <img
                     className="homebar"
-                    src="/pantspod.svg"
-                    alt="Pants design"
+                    src="https://i.ibb.co/tLDTN6m/KL3.jpg"
+                    alt="Pants picture"
                 />
-                <img className="homebar" src="/KL3.jpeg" alt="Pants picture" />
-                <img
-                    className="homebar"
-                    src="/pantspod.svg"
-                    alt="Pants design"
-                />
+                <PantsPod className="homebar" />
             </div>
             <div>
                 <p className="homep">
@@ -55,7 +52,7 @@ const Home = () => {
                     <div>{result.data[result.data.length - 1].description}</div>
                     <a href={result.data[result.data.length - 1].spotify_url}>
                         <img
-                            src="/spotify_logo.png"
+                            src="https://i.ibb.co/jbZVdqr/spotify-logo.png"
                             alt="spotify_logo"
                             height={100}
                             width={100}
@@ -63,7 +60,7 @@ const Home = () => {
                     </a>
                     <a href={result.data[result.data.length - 1].apple_url}>
                         <img
-                            src="/apple_logo.png"
+                            src="https://i.ibb.co/h7dyTCf/apple-logo.png"
                             alt="apple_logo"
                             height={100}
                             width={100}

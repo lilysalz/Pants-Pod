@@ -44,8 +44,8 @@ services:
             VITE_API_HOST: ${VITE_API_HOST}
     ### Uncomment code to add pg-admin, used for local db troubleshooting
     ### Don't forget to add:
-    ### PG_DEFAULT_EMAIL=noah.b.bowman@gmail.com
-    ### PG_DEFAULT_PASS=12341234
+    ### PG_DEFAULT_EMAIL=pant@pants.org
+    ### PG_DEFAULT_PASS=somePassword
     ### To your top-level .env file and run command `docker volume create pg-admin`
     # pg-admin:
     #     image: dpage/pgadmin4

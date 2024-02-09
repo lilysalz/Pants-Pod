@@ -6,4 +6,3 @@ Please put any and all documentation for your project in this folder. Other than
 
 2. Put screen shot of our data structure
 
-3.??

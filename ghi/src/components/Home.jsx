@@ -1,7 +1,6 @@
 import Card from 'react-bootstrap/Card'
 import { useEffect } from 'react'
 import { useLazyGetAllEpisodesQuery } from '../app/apiSlice'
-import Footer from './Footer'
 
 const Home = () => {
     const [episodes, result] = useLazyGetAllEpisodesQuery()
@@ -72,7 +71,6 @@ const Home = () => {
                     </a>
                 </Card.Body>
             </Card>
-            <Footer />
         </>
     )
 }

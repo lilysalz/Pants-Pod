@@ -1,5 +1,4 @@
 import Card from 'react-bootstrap/Card'
-import Footer from './Footer'
 
 function AboutUs() {
     return (
@@ -76,7 +75,6 @@ function AboutUs() {
                     />
                 </div>
             </div>
-            <Footer />
         </>
     )
 }

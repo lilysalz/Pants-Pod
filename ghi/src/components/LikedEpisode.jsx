@@ -6,7 +6,6 @@ import { useGetLikedEpisodesQuery } from '../app/apiSlice'
 import PantsHeart from './PantsHeart'
 import { useLazyGetAllEpisodesQuery } from '../app/apiSlice'
 import { useState, useEffect } from 'react'
-import Footer from './Footer'
 
 function LikedEpisodes() {
     const { data: likedEpisodes, error, isLoading } = useGetLikedEpisodesQuery()
@@ -56,7 +55,7 @@ function LikedEpisodes() {
                                     <Card
                                         style={{
                                             width: '19rem',
-                                            height: '29rem',
+                                            height: '31rem',
                                         }}
                                     >
                                         <Card.Img
@@ -102,7 +101,6 @@ function LikedEpisodes() {
                                             <Card.Link href="#">
                                                 <PantsHeart
                                                     lE="true"
-                                                    key={episode.spotify_id}
                                                     episode_id={
                                                         episode.spotify_id
                                                     }
@@ -117,7 +115,6 @@ function LikedEpisodes() {
                     })}
                 </Row>
             </Container>
-            <Footer />
         </>
     )
 }

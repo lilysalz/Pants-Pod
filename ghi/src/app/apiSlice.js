@@ -72,6 +72,16 @@ export const pantsApi = createApi({
                 }
             },
         }),
+        submitTellUsAnything: builder.mutation({
+            query: (info) => {
+                return {
+                    url: '/api/tell_us_anything',
+                    method: 'POST',
+                    body: info,
+                    credentials: 'include',
+                }
+            },
+        }),
     }),
 })
 
@@ -86,4 +96,5 @@ export const {
     useLoginMutation,
     useSignUpMutation,
     useGetLikedEpisodesQuery,
+    useSubmitTellUsAnythingMutation,
 } = pantsApi

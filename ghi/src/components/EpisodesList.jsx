@@ -9,6 +9,7 @@ import PantsHeart from './PantsHeart'
 import PantsLogin from '../imgs/pants.min.svg?react'
 
 function EpisodesList() {
+    console.log(typeof(import.meta.env.VITE_BASE));
     const { data: account } = useGetTokenQuery()
     const [episodes, result] = useLazyGetAllEpisodesQuery()
     const [eps, setEps] = useState([])

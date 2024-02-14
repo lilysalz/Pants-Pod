@@ -8,7 +8,9 @@ export const pantsApi = createApi({
     endpoints: (builder) => ({
         getAllEpisodes: builder.query({
             query: () => '/api/episodes',
+            providesTags: ['Episodes'],
         }),
+
         likeEpisode: builder.mutation({
             query: (info) => ({
                 url: '/api/episodes/liked/me',
@@ -82,6 +84,18 @@ export const pantsApi = createApi({
                 }
             },
         }),
+        getPodcastData: builder.query({
+            query: () => '/api/episodes/admin/get_podcast_data',
+        }),
+        deletePodcastData: builder.mutation({
+            query: () => {
+                return {
+                    url: '/api/episodes/admin/clear_episode_data',
+                    method: 'DELETE',
+                }
+            },
+            invalidatesTags: ['Episodes'],
+        }),
     }),
 })
 
@@ -97,4 +111,6 @@ export const {
     useSignUpMutation,
     useGetLikedEpisodesQuery,
     useSubmitTellUsAnythingMutation,
+    useGetPodcastDataQuery,
+    useDeletePodcastDataMutation
 } = pantsApi

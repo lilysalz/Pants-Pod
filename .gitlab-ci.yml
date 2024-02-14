@@ -57,6 +57,7 @@ build-front-end-job:
     # VITE_PUBLIC_URL: https://un-pantalon.gitlab.io/pants
     VITE_PUBLIC_URL: https://un-pantalon.gitlab.io/pants/
     VITE_API_HOST: https://oct-2023-11et-api.mod3projects.com
+    VITE_BASE: /pants/
   script:
     - cd ghi
     - npm install

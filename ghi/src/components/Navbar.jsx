@@ -23,6 +23,11 @@ const NavBar = () => {
                             Liked Episodes
                         </Nav.Link>
                     )}
+                    {account && (
+                        <Nav.Link as={Link} to="/api/TellUsAnything">
+                            Tell Us Anything
+                        </Nav.Link>
+                    )}
                     <Nav.Link as={Link} to="/api/AboutUs">
                         About Us
                     </Nav.Link>

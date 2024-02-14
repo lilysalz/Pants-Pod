@@ -10,6 +10,7 @@ import CardEpisodelist from './components/CardEpisodelist'
 import LikedEpisodes from './components/LikedEpisode'
 import AboutUs from './components/AboutUs'
 import Footer from './components/Footer'
+import TellUsAnything from './components/TellUsAnything'
 
 // All your environment variables in vite are in this object
 // console.table(import.meta.env)
@@ -22,7 +23,6 @@ if (!API_HOST) {
     throw new Error('VITE_API_HOST is not defined')
 }
 
-
 // /**
 //  * This is an example of using JSDOC to define types for your component
 //  * @typedef {{module: number, week: number, day: number, min: number, hour: number}} LaunchInfo
@@ -31,8 +31,8 @@ if (!API_HOST) {
 //  * @returns {React.ReactNode}
 //  */
 function App() {
-    const domain = /http(s?):\/\/[^/]+/;
-    const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "")
+    const domain = /http(s?):\/\/[^/]+/
+    const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, '')
     return (
         <BrowserRouter basename={basename}>
             <NavBar />
@@ -44,6 +44,10 @@ function App() {
                 <Route path="/CardedEpisodes" element={<CardEpisodelist />} />
                 <Route path="/api/LikedEpisodes" element={<LikedEpisodes />} />
                 <Route path="/api/AboutUs" element={<AboutUs />} />
+                <Route
+                    path="/api/TellUsAnything"
+                    element={<TellUsAnything />}
+                />
             </Routes>
             <Footer />
         </BrowserRouter>

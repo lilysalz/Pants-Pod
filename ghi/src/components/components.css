@@ -30,6 +30,10 @@ footer {
     border: 2px solid rgb(29, 67, 33);
 }
 
+a {
+    color: rgb(45, 61, 36);
+}
+
 tr {
     height: 70px;
 }
@@ -115,7 +119,7 @@ body {
 }
 
 .homebar {
-    width: 27%;
+    width: 31%;
 }
 
 .homep {

@@ -9,7 +9,9 @@ export const pantsApi = createApi({
         getAllEpisodes: builder.query({
             query: () => '/api/episodes',
             providesTags: ['Episodes'],
+            providesTags: ['Episodes'],
         }),
+
 
         likeEpisode: builder.mutation({
             query: (info) => ({
@@ -20,6 +22,7 @@ export const pantsApi = createApi({
             }),
             invalidatesTags: ['Favorites'],
         }),
+
         deleteLikeEpisode: builder.mutation({
             query: (id) => ({
                 url: `/api/episodes/liked/me?episode_id=${id}`,
@@ -28,6 +31,7 @@ export const pantsApi = createApi({
             }),
             invalidatesTags: ['Favorites'],
         }),
+
         getLikedEpisodes: builder.query({
             query: () => ({
                 url: '/api/episodes/liked/me',
@@ -35,6 +39,7 @@ export const pantsApi = createApi({
             }),
             providesTags: ['Favorites'],
         }),
+
         getToken: builder.query({
             query: () => ({
                 url: '/token',
@@ -42,6 +47,7 @@ export const pantsApi = createApi({
             }),
             providesTags: ['Account'],
         }),
+
         logout: builder.mutation({
             query: () => ({
                 url: '/token',
@@ -50,6 +56,7 @@ export const pantsApi = createApi({
             }),
             invalidatesTags: ['Account'],
         }),
+
         login: builder.mutation({
             query: (info) => {
                 const formData = new FormData()
@@ -65,6 +72,7 @@ export const pantsApi = createApi({
             },
             invalidatesTags: ['Account'],
         }),
+
         signUp: builder.mutation({
             query: (info) => {
                 return {
@@ -74,6 +82,7 @@ export const pantsApi = createApi({
                 }
             },
         }),
+
         submitTellUsAnything: builder.mutation({
             query: (info) => {
                 return {
@@ -84,9 +93,11 @@ export const pantsApi = createApi({
                 }
             },
         }),
+
         getPodcastData: builder.query({
             query: () => '/api/episodes/admin/get_podcast_data',
         }),
+
         deletePodcastData: builder.mutation({
             query: () => {
                 return {
@@ -96,6 +107,22 @@ export const pantsApi = createApi({
             },
             invalidatesTags: ['Episodes'],
         }),
+
+        getAllComments: builder.query({
+            query: (episode_id) => `/api/episodes/comments/${episode_id}`,
+            providesTags: ['Comments'],
+        }),
+
+        addComment: builder.mutation({
+            query: (info, episode_id) => {
+                return {
+                    url: `/api/episodes/comments/${episode_id}`,
+                    method: 'POST',
+                    body: info,
+                    credentials: 'include',
+                }
+            }
+        })
     }),
 })
 
@@ -112,5 +139,7 @@ export const {
     useGetLikedEpisodesQuery,
     useSubmitTellUsAnythingMutation,
     useGetPodcastDataQuery,
-    useDeletePodcastDataMutation
+    useDeletePodcastDataMutation,
+    useGetAllCommentsQuery,
+    useAddCommentMutation,
 } = pantsApi

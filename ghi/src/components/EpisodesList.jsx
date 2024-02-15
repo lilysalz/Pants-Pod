@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
     useLazyGetAllEpisodesQuery,
     useLazyGetLikedEpisodesQuery,
@@ -9,7 +10,7 @@ import PantsHeart from './PantsHeart'
 import PantsLogin from '../imgs/pants.min.svg?react'
 
 function EpisodesList() {
-    console.log(typeof(import.meta.env.VITE_BASE));
+    console.log(typeof import.meta.env.VITE_BASE)
     const { data: account } = useGetTokenQuery()
     const [episodes, result] = useLazyGetAllEpisodesQuery()
     const [eps, setEps] = useState([])
@@ -31,6 +32,7 @@ function EpisodesList() {
                 )
         }
     }, [liked, account])
+    
     if (result['isLoading']) {
         return <div>Loading...</div>
     }
@@ -93,7 +95,15 @@ function EpisodesList() {
                                 : false
                             return (
                                 <tr key={episode.spotify_id}>
-                                    <td>{episode.title}</td>
+                                    <td>
+                                        <Link
+                                            key={episode.spotify_id}
+                                            to={'/api/Detail'}
+                                            state={{ episode: episode, lE: lE }}
+                                        >
+                                            {episode.title}
+                                        </Link>
+                                    </td>
                                     <td>{getDate(episode.release_date)}</td>
                                     <td>{getDuration(episode.duration)}</td>
                                     <td>

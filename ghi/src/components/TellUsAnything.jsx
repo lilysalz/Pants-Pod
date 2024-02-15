@@ -1,15 +1,13 @@
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import {
     useSubmitTellUsAnythingMutation,
     useGetTokenQuery,
 } from '../app/apiSlice'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const TellUsAnything = () => {
     const [submissionText, setSubmissionText] = useState('')
-    const [submitTellUs, submissionStatus] = useSubmitTellUsAnythingMutation()
-    const [submissionError, setSubmissionError] = useState('')
+    const [submitTellUs] = useSubmitTellUsAnythingMutation()
+
     const { data: account } = useGetTokenQuery()
 
     function getCurrentDate() {
